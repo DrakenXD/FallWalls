@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI TxtCoins;
-    [SerializeField] private TextMeshProUGUI TxtLevels;
+    [SerializeField] private TextMeshProUGUI TxtFase;
 
     // Start is called before the first frame update
     void Start()

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54261b476533d5842939f1207dfef7dc, type: 3}
+  m_Name: Terra
+  m_EditorClassIdentifier: 
+  nameWall: Terra
+  MaxLife: 40
+  spriteWall:
+  - {fileID: 21300000, guid: a8aa19ccf0db77145aea617997026269, type: 3}
+  - {fileID: 21300000, guid: f37d088e9b7e1024e974718eba25f97c, type: 3}
+  prefabWall: {fileID: 8631241536434720780, guid: 0b0deb300f30bf840af3135a319cae4b, type: 3}
+  prefabEffect: {fileID: 9160343691521282217, guid: bb2dfb6d9023b8b419dd7fc08b3fdec3, type: 3}
+  timeSpawn: 1.05
+  MinLevel: 1
+  MaxLevel: 5

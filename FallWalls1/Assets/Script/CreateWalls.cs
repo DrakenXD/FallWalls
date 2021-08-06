@@ -24,9 +24,9 @@ public class CreateWalls : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Image barLife;
     [SerializeField] private TextMeshProUGUI txtName;
+    [SerializeField] private TextMeshProUGUI txtLife;
+    [SerializeField] private TextMeshProUGUI txtLevel;
 
-    [Header("Components")]
-    [SerializeField] private WallController wallcontroller;
 
     private void Awake()
     {
@@ -34,9 +34,13 @@ public class CreateWalls : MonoBehaviour
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
-       
+        txtLevel.SetText(level+" :level");
     }
- 
+
+    private void Start()
+    {
+        SearchWall();
+    }
 
     // Update is called once per frame
     void Update()
@@ -45,17 +49,28 @@ public class CreateWalls : MonoBehaviour
         {
             if (reiniciarwave <= 0)
             {
+                level ++;
                 indexWall = 0;
                 reiniciarwave = 3f;
+                txtLevel.SetText(level + " :level");
             }
             else reiniciarwave -= Time.deltaTime;
         }
 
         if (timespawn <= 0 && indexWall < AmountWallCreated)
         {
-            CreateWall(level);
 
-            timespawn = TypeWalls[level].timeSpawn;
+
+            for (int i = 1; i < TypeWalls.Length; i++)
+            {
+                if (TypeWalls[i].MinLevel <= level && TypeWalls[i].MaxLevel >= level)
+                {
+                    CreateWall(i);
+
+                    timespawn = TypeWalls[i].timeSpawn;
+                }
+            }
+            
 
             indexWall++;
         }
@@ -104,6 +119,11 @@ public class CreateWalls : MonoBehaviour
     }
     public void SearchWall()
     {
+        StartCoroutine(TimeTosearch());
+    }
+    private IEnumerator TimeTosearch()
+    {
+        yield return new WaitForSeconds(.1f);
         GameObject nearestWall = null;
 
         foreach (GameObject _wall in TotalWalls)
@@ -123,18 +143,19 @@ public class CreateWalls : MonoBehaviour
             BarLife(Attackwall.GetComponent<WallController>().life, Attackwall.GetComponent<WallController>().GetMaxLife());
 
             TxtName(Attackwall.GetComponent<WallController>().GetName());
+
+           
         }
         else
         {
             Attackwall = null;
         }
     }
-
     public void CreateWall(int index)
     {
         GameObject cloneWall = Instantiate(TypeWalls[index].prefabWall, transform.position, Quaternion.identity);
-        
         LastWall = cloneWall;
+        SearchWall();
     }
 
 
@@ -146,5 +167,6 @@ public class CreateWalls : MonoBehaviour
     public void BarLife(float lifeMin, float lifeMax)
     {
         barLife.fillAmount = lifeMin/lifeMax;
+        txtLife.SetText(lifeMin + "/" + lifeMax);
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WallController : MonoBehaviour
 {
-    public Wall wall;
-    public SpriteRenderer sprite;
+    [SerializeField] private Wall wall;
+    [SerializeField] private SpriteRenderer sprite;
     public float life;
     public const float speed = 1.5f;
     
@@ -14,7 +14,7 @@ public class WallController : MonoBehaviour
     {
         life = wall.MaxLife;
 
-     
+        sprite.sprite = wall.spriteWall[Random.Range(0, wall.spriteWall.Length)];
     }
 
     private void Update()
@@ -33,12 +33,13 @@ public class WallController : MonoBehaviour
         if (life <= 0)
         {
             GameController.instance.AddCoin(5);
+
             GameObject effect = Instantiate(wall.prefabEffect,transform.position,Quaternion.identity);
 
             FindObjectOfType<CreateWalls>().SearchWall();
 
-
             Destroy(effect,3f);
+
             Destroy(gameObject);
         }
             
@@ -52,10 +53,7 @@ public class WallController : MonoBehaviour
         sprite.color = Color.white;
     }
 
-    public float GetPositionY()
-    {
-        return transform.position.y;
-    }
+  
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -65,11 +63,13 @@ public class WallController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
+    public float GetPositionY()
+    {
+        return transform.position.y;
+    }
     public string GetName()
     {
-        return wall.name;
+        return wall.nameWall;
     }
     public float GetMaxLife()
     {
