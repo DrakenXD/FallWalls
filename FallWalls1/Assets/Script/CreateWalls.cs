@@ -6,7 +6,6 @@ using TMPro;
 
 public class CreateWalls : MonoBehaviour
 {
-    [SerializeField] private int level;
 
     [SerializeField] private Wall[] TypeWalls;
     [SerializeField] private float timespawn;
@@ -28,14 +27,20 @@ public class CreateWalls : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtLife;
     [SerializeField] private TextMeshProUGUI txtLevel;
 
+    [Header("NextFase")]
+    [SerializeField] private GameObject I_NextFase;
+    [SerializeField] private GameObject I_BackFase;
+
 
     private void Awake()
     {
-        level = 1;
+        SaveScore.instance.levelInGame = 1;
+
+        SaveScore.instance.Load(SaveScore.TypeSave.Level);
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        txtLevel.SetText(level+" :level");
+        txtLevel.SetText(SaveScore.instance.levelInGame + " :level");
     }
 
     private void Start()
@@ -50,10 +55,10 @@ public class CreateWalls : MonoBehaviour
         {
             if (R_wave <= 0)
             {
-                level ++;
+              
                 indexWall = 0;
                 R_wave = ReiniciarWave;
-                txtLevel.SetText(level + " :level");
+           
             }
             else R_wave -= Time.deltaTime;
         }
@@ -64,7 +69,7 @@ public class CreateWalls : MonoBehaviour
 
             for (int i = 1; i < TypeWalls.Length; i++)
             {
-                if (TypeWalls[i].MinLevel <= level && TypeWalls[i].MaxLevel >= level)
+                if (TypeWalls[i].LevelSpawn == SaveScore.instance.levelInGame)
                 {
                     CreateWall(i);
 
@@ -79,6 +84,15 @@ public class CreateWalls : MonoBehaviour
         {
             timespawn -= Time.deltaTime;
         }
+    }
+
+    public void Nextlevel()
+    {
+        SaveScore.instance.levelInGame++;
+
+        SaveScore.instance.Save(SaveScore.TypeSave.Level);
+
+        txtLevel.SetText(SaveScore.instance.levelInGame + " :level");
     }
 
     private void LateUpdate()
