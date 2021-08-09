@@ -19,7 +19,8 @@ public class CreateWalls : MonoBehaviour
     [SerializeField] private GameObject[] TotalWalls;
     [SerializeField] private Transform target;
     [SerializeField] private GameObject Attackwall;
-    [SerializeField] private float reiniciarwave = 3f;
+    [SerializeField] private float ReiniciarWave=3;
+    [SerializeField] private float R_wave;
 
     [Header("UI")]
     [SerializeField] private Image barLife;
@@ -47,14 +48,14 @@ public class CreateWalls : MonoBehaviour
     {
         if (indexWall == AmountWallCreated && TotalWalls.Length <= 0)
         {
-            if (reiniciarwave <= 0)
+            if (R_wave <= 0)
             {
                 level ++;
                 indexWall = 0;
-                reiniciarwave = 3f;
+                R_wave = ReiniciarWave;
                 txtLevel.SetText(level + " :level");
             }
-            else reiniciarwave -= Time.deltaTime;
+            else R_wave -= Time.deltaTime;
         }
 
         if (timespawn <= 0 && indexWall < AmountWallCreated)
@@ -85,7 +86,7 @@ public class CreateWalls : MonoBehaviour
         TotalWalls = GameObject.FindGameObjectsWithTag("Wall");
     }
 
-    public void AttackWall(int dmg)
+    public void AttackWall(Elements elements, int dmg, int dmgElements)
     {
         
         GameObject nearestWall = null;
@@ -104,7 +105,7 @@ public class CreateWalls : MonoBehaviour
         {
             Attackwall = nearestWall;
           
-            Attackwall.GetComponent<WallController>().TakeDamage(dmg);
+            Attackwall.GetComponent<WallController>().TakeDamage(elements,dmg,dmgElements);
 
 
             BarLife(Attackwall.GetComponent<WallController>().life, Attackwall.GetComponent<WallController>().GetMaxLife());

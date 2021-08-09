@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public int life;
     public bool isDeath;
 
-    
     public void TakeDamage(int dmg)
     {
         life -= dmg;

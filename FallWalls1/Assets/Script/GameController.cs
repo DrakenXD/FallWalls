@@ -15,14 +15,22 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         SaveScore.instance.Load(SaveScore.TypeSave.Coin);
         SaveScore.instance.CoinInGame = SaveScore.instance.CoinTotal;
+
+        UpdateTextCoin();
     }
 
  
     public void AddCoin(int amount)
     {
         SaveScore.instance.CoinInGame += amount;
-        TxtCoins.SetText("" + SaveScore.instance.CoinInGame); 
+        UpdateTextCoin();
+    }
+    public void UpdateTextCoin()
+    {
+        TxtCoins.SetText("" + SaveScore.instance.CoinInGame);
     }
 }

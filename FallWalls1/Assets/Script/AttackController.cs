@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    
+    public PickaxeController pickaxe;
 
     public void Attack()
     {
-        FindObjectOfType<CreateWalls>().AttackWall(10);
+        FindObjectOfType<CreateWalls>().AttackWall(pickaxe.elements,pickaxe.damage, pickaxe.damageElements);
     }
 }

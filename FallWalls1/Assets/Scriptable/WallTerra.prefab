@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8784593580065318601}
   - component: {fileID: 7005836930160682219}
   m_Layer: 6
-  m_Name: Wall
+  m_Name: WallTerra
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: {fileID: 11400000, guid: 76ff4c219f5a2e2428aef65e9fad4b28, type: 2}
   sprite: {fileID: 8631241536434720781}
+  txtDamage: {fileID: 4542372370009365685, guid: 5341c9c775c48bf4a875bfc803578411, type: 3}
   life: 0
 --- !u!61 &7005836930160682219
 BoxCollider2D:
