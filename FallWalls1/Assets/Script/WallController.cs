@@ -69,6 +69,10 @@ public class WallController : MonoBehaviour
 
             FindObjectOfType<CreateWalls>().SearchWall();
 
+            FindObjectOfType<CreateWalls>().UpdateVerifylevel();
+
+            CreateWalls.AmountKillsToNextFase--;
+
             Destroy(txtdamage,3f);
 
             Destroy(effect,3f);

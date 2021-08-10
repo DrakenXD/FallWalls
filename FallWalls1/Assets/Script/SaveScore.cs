@@ -11,10 +11,10 @@ public class SaveScore : MonoBehaviour
     }
 
     public int CoinInGame;
-    public int levelInGame;
+    public int levelInGame=1;
    
     public int CoinTotal;
-    public int LevelTotal;
+    public int LevelTotal=1;
 
     public void Save(TypeSave save)
     {

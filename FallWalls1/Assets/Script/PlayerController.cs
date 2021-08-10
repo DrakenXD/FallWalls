@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
         {
             FindObjectOfType<NewScene>().NextScene("SampleScene");
             SaveScore.instance.Save(SaveScore.TypeSave.Coin);
+            SaveScore.instance.Save(SaveScore.TypeSave.Level);
             isDeath = true;
         }
     }
