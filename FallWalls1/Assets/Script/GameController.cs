@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
         SaveScore.instance.Load(SaveScore.TypeSave.Coin);
         SaveScore.instance.CoinInGame = SaveScore.instance.CoinTotal;
         SaveScore.instance.Load(SaveScore.TypeSave.Level);
-        SaveScore.instance.levelInGame = SaveScore.instance.LevelTotal;
+   
 
 
         UpdateTextCoin();

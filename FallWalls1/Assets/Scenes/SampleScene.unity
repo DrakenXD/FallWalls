@@ -1223,7 +1223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeWalls:
-  - {fileID: 0}
   - {fileID: 11400000, guid: 76ff4c219f5a2e2428aef65e9fad4b28, type: 2}
   - {fileID: 11400000, guid: 67666f5452f81df43a2ea8a475f9d32c, type: 2}
   timespawn: 0
@@ -1233,7 +1232,7 @@ MonoBehaviour:
   TotalWalls: []
   target: {fileID: 0}
   Attackwall: {fileID: 0}
-  ReiniciarWave: 1
+  ReiniciarWave: 0
   R_wave: 0
   barLife: {fileID: 1537406199}
   txtName: {fileID: 328629370}

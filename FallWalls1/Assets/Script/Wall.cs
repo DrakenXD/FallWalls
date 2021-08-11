@@ -12,5 +12,5 @@ public class Wall : ScriptableObject
     public float timeSpawn;
 
     [Header("          Level Spawn")]
-    [Range(1, 999)] public int LevelSpawn;
+    [Range(0, 999)] public int LevelSpawn;
 }

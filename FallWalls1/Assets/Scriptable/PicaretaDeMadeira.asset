@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Picareta De Madeira
   icon: {fileID: 21300000, guid: 167c251b21307fb4981baf6e1382e2d7, type: 3}
   description: 
-  damage: 5
+  damage: 505
   elements: 1
   damageElements: 9

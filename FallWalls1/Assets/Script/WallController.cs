@@ -37,7 +37,7 @@ public class WallController : MonoBehaviour
 
         if (elements!=Elements.None)
         {
-            GameObject txtdamageElements = Instantiate(txtDamage, new Vector3(txtdamage.transform.position.x + .5f, txtdamage.transform.position.y + .2f, 5), Quaternion.identity);
+            GameObject txtdamageElements = Instantiate(txtDamage, new Vector3(txtdamage.transform.position.x + .5f, txtdamage.transform.position.y + .5f, 5), Quaternion.identity);
             txtdamageElements.GetComponent<TextMesh>().fontSize = 40;
             txtdamageElements.GetComponent<TextMesh>().text = "" + dmgElements;
 
