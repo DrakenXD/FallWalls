@@ -93,9 +93,9 @@ public class CreateWalls : MonoBehaviour
 
     public void UpdateUIButtonLevel()
     {
-        if (verifyLevel[SaveScore.instance.levelInGame] )
+        if (verifyLevel[SaveScore.instance.levelInGame] && SaveScore.instance.levelInGame < TypeWalls.Length-1)
         {
-            if (SaveScore.instance.levelInGame < SaveScore.instance.LevelTotal) I_NextFase.SetActive(true);
+            I_NextFase.SetActive(true);
 
         }
         else
@@ -125,12 +125,9 @@ public class CreateWalls : MonoBehaviour
         if (AmountKillsToNextFase <= 0 && !verifyLevel[SaveScore.instance.levelInGame])
         {
             verifyLevel[SaveScore.instance.levelInGame] = true;
-
-            
-
-            UpdateUIButtonLevel();
-
         }
+
+        UpdateUIButtonLevel();
 
         Debug.Log("Level"+ SaveScore.instance.levelInGame + verifyLevel[SaveScore.instance.levelInGame]);
     }

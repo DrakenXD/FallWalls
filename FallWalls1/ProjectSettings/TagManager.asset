@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - SpriteElements
   layers:
   - Default
   - TransparentFX
@@ -42,9 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 908572015
-    locked: 0
   - name: Effects
     uniqueID: 2360587805
+    locked: 0
+  - name: UI
+    uniqueID: 908572015
     locked: 0

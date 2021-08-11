@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class WallController : MonoBehaviour
 {
     [SerializeField] private Wall wall;
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject txtDamage;
+    [SerializeField] private TypeSpriteElements[] typeSpriteElements;
+    [SerializeField] private GameObject spriteElement;
+
     public float life;
     public const float speed = 1.5f;
     
@@ -25,6 +30,7 @@ public class WallController : MonoBehaviour
 
     public void TakeDamage(Elements elements,int dmg, int dmgElements)
     {
+
         life -= dmg;
         life -= dmgElements;
 
@@ -41,22 +47,21 @@ public class WallController : MonoBehaviour
             txtdamageElements.GetComponent<TextMesh>().fontSize = 40;
             txtdamageElements.GetComponent<TextMesh>().text = "" + dmgElements;
 
-            switch (elements)
+            for (int i = 0; i < typeSpriteElements.Length; i++) 
             {
-                case Elements.Lightning:
-                    txtdamageElements.GetComponent<TextMesh>().color = Color.yellow;
-                    break;
-                case Elements.Fire:
-                    txtdamageElements.GetComponent<TextMesh>().color = Color.red;
-                    break;
-                case Elements.Water:
-                    txtdamageElements.GetComponent<TextMesh>().color = Color.cyan;
-                    break;
-                case Elements.Wind:
-                    txtdamageElements.GetComponent<TextMesh>().color = Color.gray;
-                    break;
+                if (typeSpriteElements[i].elements == elements)
+                {
+                    FindObjectOfType<SpriteElements>().SetSpriteElement(typeSpriteElements[i].sprite);
 
+                    txtdamageElements.GetComponent<TextMesh>().color = typeSpriteElements[i].color;
+
+                
+                }
             }
+
+            Destroy(txtdamage, 3f);
+            Destroy(txtdamageElements, 3f);
+
         }
 
         if (life <= 0)
@@ -73,14 +78,15 @@ public class WallController : MonoBehaviour
 
             CreateWalls.AmountKillsToNextFase--;
 
-            Destroy(txtdamage,3f);
-
-            Destroy(effect,3f);
+            Destroy(effect, 3f);
 
             Destroy(gameObject);
         }
-            
-            
+
+ 
+
+ 
+
     }
 
     private IEnumerator AnimationDamage()

@@ -99,6 +99,11 @@ MonoBehaviour:
   wall: {fileID: 11400000, guid: 67666f5452f81df43a2ea8a475f9d32c, type: 2}
   sprite: {fileID: 8631241536434720781}
   txtDamage: {fileID: 4542372370009365685, guid: 5341c9c775c48bf4a875bfc803578411, type: 3}
+  typeSpriteElements:
+  - {fileID: 11400000, guid: 4f5630df316ac5d4e8a02011a48445ef, type: 2}
+  - {fileID: 11400000, guid: 1e6c97947db6fc7448152682a4d2d4b8, type: 2}
+  - {fileID: 11400000, guid: 5f41883adee85344880c68670c5471c7, type: 2}
+  - {fileID: 11400000, guid: a4d919ee07ba9444f92786161185f4d4, type: 2}
   life: 0
 --- !u!61 &7005836930160682219
 BoxCollider2D:
