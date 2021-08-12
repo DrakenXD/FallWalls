@@ -44,7 +44,7 @@ public class WallController : MonoBehaviour
         if (elements!=Elements.None)
         {
             GameObject txtdamageElements = Instantiate(txtDamage, new Vector3(txtdamage.transform.position.x + .5f, txtdamage.transform.position.y + .5f, 5), Quaternion.identity);
-            txtdamageElements.GetComponent<TextMesh>().fontSize = 40;
+            txtdamageElements.GetComponent<TextMesh>().fontSize = 60;
             txtdamageElements.GetComponent<TextMesh>().text = "" + dmgElements;
 
             for (int i = 0; i < typeSpriteElements.Length; i++) 
@@ -66,9 +66,13 @@ public class WallController : MonoBehaviour
 
         if (life <= 0)
         {
-            life = 0;
+            int rdCoin = (int)Random.Range(wall.CoinMin,wall.CoinMax);
+            int rdExp = (int)Random.Range(wall.ExpMin, wall.ExpMax);
 
-            GameController.instance.AddCoin(5);
+            GameController.instance.AddCoin(rdCoin);
+            GameController.instance.AddExpMining(rdExp);
+
+            life = 0;
 
             GameObject effect = Instantiate(wall.prefabEffect,transform.position,Quaternion.identity);
 

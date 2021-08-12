@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 4563448354592790578}
-  color: {fileID: 4542372370009365684}
 --- !u!1 &4542372370009365685
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +187,7 @@ TextMesh:
   m_Anchor: 5
   m_Alignment: 0
   m_TabSize: 0
-  m_FontSize: 40
+  m_FontSize: 80
   m_FontStyle: 2
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}

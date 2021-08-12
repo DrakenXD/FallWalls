@@ -11,6 +11,14 @@ public class Wall : ScriptableObject
     public GameObject prefabEffect;
     public float timeSpawn;
 
+    [Header("          Exp Earned")]
+    public float CoinMin;
+    public float CoinMax;
+
+    [Header("          Exp Earned")]
+    public float ExpMin;
+    public float ExpMax;
+
     [Header("          Level Spawn")]
     [Range(0, 999)] public int LevelSpawn;
 }

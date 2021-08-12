@@ -34,12 +34,13 @@ public class CreateWalls : MonoBehaviour
     public static List<bool> verifyLevel = new List<bool>();
 
     public static int AmountKillsToNextFase;
+    private int levelInGame;
 
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        txtLevel.SetText(SaveScore.instance.levelInGame + " :level");
+    
     }
 
     private void Start()
@@ -74,7 +75,7 @@ public class CreateWalls : MonoBehaviour
 
             for (int i = 0; i < TypeWalls.Length; i++)
             {
-                if (TypeWalls[i].LevelSpawn == SaveScore.instance.levelInGame)
+                if (TypeWalls[i].LevelSpawn == levelInGame)
                 {
                     CreateWall(i);
 
@@ -93,7 +94,7 @@ public class CreateWalls : MonoBehaviour
 
     public void UpdateUIButtonLevel()
     {
-        if (verifyLevel[SaveScore.instance.levelInGame] && SaveScore.instance.levelInGame < TypeWalls.Length-1)
+        if (verifyLevel[levelInGame] && levelInGame < TypeWalls.Length-1)
         {
             I_NextFase.SetActive(true);
 
@@ -102,7 +103,7 @@ public class CreateWalls : MonoBehaviour
         {
             I_NextFase.SetActive(false);
         }
-        if (SaveScore.instance.levelInGame > 0)
+        if (levelInGame > 0)
         {
             I_BackFase.SetActive(true);
         }
@@ -117,27 +118,27 @@ public class CreateWalls : MonoBehaviour
         {
             verifyLevel.Add(false);
 
-            Debug.Log("Level"+ i + verifyLevel[i]);
+            Debug.Log("Fase" + i + verifyLevel[i]);
         }
     }
     public void UpdateVerifylevel()
     {
-        if (AmountKillsToNextFase <= 0 && !verifyLevel[SaveScore.instance.levelInGame])
+        if (AmountKillsToNextFase <= 0 && !verifyLevel[levelInGame])
         {
-            verifyLevel[SaveScore.instance.levelInGame] = true;
+            verifyLevel[levelInGame] = true;
         }
 
         UpdateUIButtonLevel();
 
-        Debug.Log("Level"+ SaveScore.instance.levelInGame + verifyLevel[SaveScore.instance.levelInGame]);
+        Debug.Log("Fase" + levelInGame + verifyLevel[levelInGame]);
     }
     public void ButtonNextlevel(int index)
     {
-        SaveScore.instance.levelInGame += index;
+        levelInGame += index;
 
-        SaveScore.instance.Save(SaveScore.TypeSave.Level);
+        SaveScore.instance.Save(SaveScore.TypeSave.LevelBattle);
 
-        txtLevel.SetText(SaveScore.instance.levelInGame + " :level");
+        txtLevel.SetText("(" +levelInGame + ")");
 
         //destruir todas as paredes
         for (int i = 0; i < TotalWalls.Length; i++)

@@ -20,4 +20,8 @@ MonoBehaviour:
   prefabWall: {fileID: 8631241536434720780, guid: 2ee09e16c27056444a9812b0e7c4fd69, type: 3}
   prefabEffect: {fileID: 9160343691521282217, guid: bb2dfb6d9023b8b419dd7fc08b3fdec3, type: 3}
   timeSpawn: 1.05
+  CoinMin: 5
+  CoinMax: 9
+  ExpMin: 9
+  ExpMax: 16
   LevelSpawn: 1
