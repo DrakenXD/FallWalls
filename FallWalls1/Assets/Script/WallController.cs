@@ -54,8 +54,6 @@ public class WallController : MonoBehaviour
                     FindObjectOfType<SpriteElements>().SetSpriteElement(typeSpriteElements[i].sprite);
 
                     txtdamageElements.GetComponent<TextMesh>().color = typeSpriteElements[i].color;
-
-                
                 }
             }
 
@@ -86,11 +84,6 @@ public class WallController : MonoBehaviour
 
             Destroy(gameObject);
         }
-
- 
-
- 
-
     }
 
     private IEnumerator AnimationDamage()

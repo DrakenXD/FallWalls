@@ -19,9 +19,6 @@ public class InventoryBag : MonoBehaviour
         int indexStack = -1;
         bool firstItem = false;
         
-
-
-
         if (item.Count > 0)
         {
             for (int i = 0; i < item.Count; i++)
@@ -35,9 +32,7 @@ public class InventoryBag : MonoBehaviour
         }
         else
         {
-            item.Add(new InventoryItem(_item.id, _item, 1));
-
-            Debug.Log(_item.nameItem + " Qts" + amount);
+            item.Add(new InventoryItem(_item.id, _item, amount));
 
             indexStack = indexItem;
 
@@ -47,14 +42,10 @@ public class InventoryBag : MonoBehaviour
 
         if (!item.Contains(item[indexItem]))
         {
-            item.Add(new InventoryItem(_item.id, _item, 1));
-
-            Debug.Log(_item.nameItem +" Qts" + amount);
+            item.Add(new InventoryItem(_item.id, _item, amount));
         }
         else
         {
-            
-
             for (int i = 0; i < item.Count; i++)
             {
                 if (item[i].item == _item)
@@ -65,7 +56,7 @@ public class InventoryBag : MonoBehaviour
 
                         indexStack = i;
 
-                        Debug.Log(_item.nameItem + " Qts" + item[i].amount);
+
                         break;
                     }
                     
@@ -74,36 +65,61 @@ public class InventoryBag : MonoBehaviour
 
             if (indexStack == -1)
             {
-                item.Add(new InventoryItem(_item.id, _item, 1));
-
-
-                Debug.Log(_item.nameItem + " Qts" + 1);
+                item.Add(new InventoryItem(_item.id, _item, amount));
             }
         }
 
+        FindObjectOfType<InventorySlot>().UpdateSlots();
     }
+
+    public void RemoveItem(Item _item, int amount)
+    {
+        for (int i = 0; i < item.Count; i++) 
+        {
+            if (item[i].item==_item)
+            {
+                if (item[i].amount > 0)
+                {
+                    item[i].amount -= amount;
+                }
+                else
+                {
+                    item.Remove(item[i]);
+                }
+            }
+        }
+
+        FindObjectOfType<InventorySlot>().UpdateSlots();
+    }
+
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            ADDitem(n1,1);
+            ADDitem(n1, 1);
         }
-    }
-
-    [System.Serializable]
-    public class InventoryItem
-    {
-        public int ID;
-
-        public Item item;
-        public int amount;
-        public InventoryItem(int id, Item _item, int _amount)
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            this.ID = id;
-            this.item = _item;
-            this.amount = _amount;
+            RemoveItem(n1, 1);
         }
-
     }
+
+
+}
+
+[System.Serializable]
+public class InventoryItem
+{
+    public int ID;
+
+    public Item item;
+    public int amount;
+    public InventoryItem(int id, Item _item, int _amount)
+    {
+        this.ID = id;
+        this.item = _item;
+        this.amount = _amount;
+    }
+
 }
