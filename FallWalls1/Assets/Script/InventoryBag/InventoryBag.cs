@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryBag : MonoBehaviour
 {
     public List<InventoryItem> item = new List<InventoryItem>();
-   
+    public int id;
 
     public int space;
 
@@ -32,7 +32,7 @@ public class InventoryBag : MonoBehaviour
         }
         else
         {
-            item.Add(new InventoryItem(_item.id, _item, amount));
+            item.Add(new InventoryItem(id++, _item, amount));
 
             indexStack = indexItem;
 
@@ -42,7 +42,7 @@ public class InventoryBag : MonoBehaviour
 
         if (!item.Contains(item[indexItem]))
         {
-            item.Add(new InventoryItem(_item.id, _item, amount));
+            item.Add(new InventoryItem(id++, _item, amount));
         }
         else
         {
@@ -65,7 +65,7 @@ public class InventoryBag : MonoBehaviour
 
             if (indexStack == -1)
             {
-                item.Add(new InventoryItem(_item.id, _item, amount));
+                item.Add(new InventoryItem(id++, _item, amount));
             }
         }
 
@@ -76,15 +76,18 @@ public class InventoryBag : MonoBehaviour
     {
         for (int i = 0; i < item.Count; i++) 
         {
-            if (item[i].item==_item)
+            if (item[i].item == _item) 
             {
-                if (item[i].amount > 0)
+                if (item[i].item == _item)
                 {
-                    item[i].amount -= amount;
-                }
-                else
-                {
-                    item.Remove(item[i]);
+                    if (item[i].amount >= amount)
+                    {
+                        item[i].amount -= amount;
+                    }
+                    else
+                    {
+                        item.Remove(item[i]);
+                    }
                 }
             }
         }
@@ -101,7 +104,7 @@ public class InventoryBag : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            RemoveItem(n1, 1);
+            RemoveItem(n1, 5);
         }
     }
 

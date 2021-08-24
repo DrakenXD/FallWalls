@@ -10,6 +10,7 @@ public class Slots : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI txtAmount;
     private Item item;
+    private int amount;
 
     public void ADDItemInSlot(InventoryItem inventoryItem)
     {

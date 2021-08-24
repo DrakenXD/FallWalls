@@ -15,13 +15,18 @@ public class InventorySlot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        slots = transformParent.GetComponentsInChildren<Slots>();
+
         UpdateSlots();
     }
 
     public void UpdateSlots()
     {
+        /*
         if (amountSlots < inventoryBag.item.Count)
         {
+
+            
             GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
 
             newSelected.transform.SetParent(transformParent);
@@ -31,7 +36,8 @@ public class InventorySlot : MonoBehaviour
             slots = transformParent.GetComponentsInChildren<Slots>();
 
             amountSlots++;
-        }
+          
+        }*/
 
         for (int i = 0; i < inventoryBag.item.Count; i++) 
         {
