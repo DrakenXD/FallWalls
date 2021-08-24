@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class InventoryBag : MonoBehaviour
 {
+    public static InventoryBag instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
+
     public List<InventoryItem> item = new List<InventoryItem>();
     public int id;
 
     public int space;
 
-    public Item n1;
-    public Item n2;
+    public Item[] test;
+
 
     public void ADDitem(Item _item , int amount)
     {
@@ -32,17 +39,21 @@ public class InventoryBag : MonoBehaviour
         }
         else
         {
-            item.Add(new InventoryItem(id++, _item, amount));
+            item.Add(new InventoryItem(id, _item, amount));
 
             indexStack = indexItem;
 
             firstItem = true;
+
+            id++;
         }
 
 
         if (!item.Contains(item[indexItem]))
         {
-            item.Add(new InventoryItem(id++, _item, amount));
+            item.Add(new InventoryItem(id, _item, amount));
+
+            id++;
         }
         else
         {
@@ -65,7 +76,9 @@ public class InventoryBag : MonoBehaviour
 
             if (indexStack == -1)
             {
-                item.Add(new InventoryItem(id++, _item, amount));
+                item.Add(new InventoryItem(id, _item, amount));
+
+                id++;
             }
         }
 
@@ -78,35 +91,25 @@ public class InventoryBag : MonoBehaviour
         {
             if (item[i].item == _item) 
             {
-                if (item[i].item == _item)
+                if (item[i].amount >= amount)
                 {
-                    if (item[i].amount >= amount)
-                    {
-                        item[i].amount -= amount;
-                    }
-                    else
-                    {
-                        item.Remove(item[i]);
-                    }
+                    item[i].amount -= amount;
                 }
+
+                if (item[i].amount == 0)
+                {
+                    item.Remove(item[i]);
+                }
+
             }
         }
+
 
         FindObjectOfType<InventorySlot>().UpdateSlots();
     }
 
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            ADDitem(n1, 1);
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            RemoveItem(n1, 5);
-        }
-    }
+   
 
 
 }

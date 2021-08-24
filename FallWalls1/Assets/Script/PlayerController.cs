@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
         if (life <= 0)
         {
-            FindObjectOfType<NewScene>().NextScene("Map_Mining");
+            GameController.instance.ShowScreenDeath();
 
             SaveScore.instance.Save(SaveScore.TypeSave.Coin);
 

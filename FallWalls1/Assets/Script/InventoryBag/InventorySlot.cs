@@ -9,12 +9,14 @@ public class InventorySlot : MonoBehaviour
 
     [SerializeField] private Slots[] slots;
 
-    [SerializeField] private InventoryBag inventoryBag;
+    InventoryBag inventoryBag;
     private int amountSlots;
 
     // Start is called before the first frame update
     void Start()
     {
+        inventoryBag = InventoryBag.instance;
+
         slots = transformParent.GetComponentsInChildren<Slots>();
 
         UpdateSlots();
@@ -38,11 +40,23 @@ public class InventorySlot : MonoBehaviour
             amountSlots++;
           
         }*/
+     
 
-        for (int i = 0; i < inventoryBag.item.Count; i++) 
+        for (int i = 0; i < slots.Length; i++)
         {
-            slots[i].ADDItemInSlot(inventoryBag.item[i]);
+            if (i < inventoryBag.item.Count)
+            {
+                
+
+                slots[i].ADDItemInSlot(inventoryBag.item[i]);
+            }
+            else
+            {
+                slots[i].ClearSlot();
+            }
+
         }
+
     }
 
 }

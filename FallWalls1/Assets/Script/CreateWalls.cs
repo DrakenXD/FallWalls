@@ -52,6 +52,9 @@ public class CreateWalls : MonoBehaviour
         UpdateUIButtonLevel();
 
         AmountKillsToNextFase = AmountWallCreated;
+
+
+        txtLevel.SetText("(" + levelInGame + ")");
     }
 
     // Update is called once per frame

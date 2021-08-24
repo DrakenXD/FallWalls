@@ -9,25 +9,16 @@ public class Slots : MonoBehaviour
     [SerializeField] private Image slot;
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI txtAmount;
-    private Item item;
+    [SerializeField] private Item item;
     private int amount;
 
     public void ADDItemInSlot(InventoryItem inventoryItem)
     {
         item = inventoryItem.item;
 
-        if (inventoryItem.amount < 1)
-        {
-            slot.enabled = false;
-            icon.enabled = false;
-            txtAmount.enabled = false;
-        }
-        else
-        {
-            slot.enabled = true;
-            icon.enabled = true;
-            txtAmount.enabled = true;
-        }
+        slot.enabled = true;
+        icon.enabled = true;
+        txtAmount.enabled = true;
 
         icon.sprite = inventoryItem.item.sprite;
         txtAmount.SetText(inventoryItem.amount+"x");
@@ -37,4 +28,14 @@ public class Slots : MonoBehaviour
     {
         FindObjectOfType<Description>().UpdateDescription(item);
     }
+
+    public void ClearSlot()
+    {
+        slot.enabled = false;
+        icon.enabled = false;
+        txtAmount.enabled = false;
+
+        item = null;
+    }
+   
 }
