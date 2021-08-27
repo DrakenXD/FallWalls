@@ -2,30 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventorySlot : MonoBehaviour
+public class InventoryItemSlot : MonoBehaviour
 {
     [SerializeField] private Transform transformParent;
     [SerializeField] private GameObject CreateSlot;
 
-    [SerializeField] private Slots[] slots;
+    [SerializeField] private SlotItem[] slots;
 
-    InventoryBag inventoryBag;
+    [SerializeField] private InventoryItem invItem;
     private int amountSlots;
 
     // Start is called before the first frame update
     void Start()
     {
-        inventoryBag = InventoryBag.instance;
+        invItem.Load();
+        
 
-        slots = transformParent.GetComponentsInChildren<Slots>();
+        slots = transformParent.GetComponentsInChildren<SlotItem>();
 
         UpdateSlots();
     }
 
     public void UpdateSlots()
     {
-        /*
-        if (amountSlots < inventoryBag.item.Count)
+        
+        if (amountSlots < invItem.container.Count)
         {
 
             
@@ -35,20 +36,20 @@ public class InventorySlot : MonoBehaviour
            
             newSelected.transform.localScale = new Vector3(1, 1, 1);
 
-            slots = transformParent.GetComponentsInChildren<Slots>();
+            slots = transformParent.GetComponentsInChildren<SlotItem>();
 
             amountSlots++;
           
-        }*/
+        }
      
 
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < inventoryBag.item.Count)
+            if (i < invItem.container.Count)
             {
                 
 
-                slots[i].ADDItemInSlot(inventoryBag.item[i]);
+                slots[i].ADDItemInSlot(invItem.container[i]);
             }
             else
             {
@@ -56,7 +57,7 @@ public class InventorySlot : MonoBehaviour
             }
 
         }
-
+        
     }
 
 }

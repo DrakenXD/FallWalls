@@ -13,7 +13,7 @@ public enum Elements
 }
 
 [CreateAssetMenu(fileName = "Picareta", menuName ="Pickaxe/New")]
-public class PickaxeController : ScriptableObject
+public class Pickaxe : ScriptableObject
 {
     public new string name;
     public Sprite icon;

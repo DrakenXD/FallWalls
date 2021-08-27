@@ -6,14 +6,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PickaxeData", menuName = "PickaxeData")]
 public class PickaxeData : ScriptableObject, ISerializationCallbackReceiver
 {
-    public PickaxeController[] pickaxe;
+    public Pickaxe[] pickaxe;
 
-    public Dictionary<PickaxeController, int> getId = new Dictionary<PickaxeController, int>();
-    public Dictionary<int, PickaxeController> GetItem = new Dictionary<int, PickaxeController>();
+    public Dictionary<Pickaxe, int> getId = new Dictionary<Pickaxe, int>();
+    public Dictionary<int, Pickaxe> GetItem = new Dictionary<int, Pickaxe>();
     public void OnAfterDeserialize()
     {
-        getId = new Dictionary<PickaxeController, int>();
-        GetItem = new Dictionary<int, PickaxeController>();
+        getId = new Dictionary<Pickaxe, int>();
+        GetItem = new Dictionary<int, Pickaxe>();
 
         for (int i = 0; i < pickaxe.Length; i++)
         {

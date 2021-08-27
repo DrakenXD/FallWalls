@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Slots : MonoBehaviour
+public class SlotItem : MonoBehaviour
 {
     [SerializeField] private Image slot;
     [SerializeField] private Image icon;
@@ -12,7 +12,7 @@ public class Slots : MonoBehaviour
     [SerializeField] private Item item;
     private int amount;
 
-    public void ADDItemInSlot(InventoryItem inventoryItem)
+    public void ADDItemInSlot(InvItem inventoryItem)
     {
         item = inventoryItem.item;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    public PickaxeController pickaxe;
+    public Pickaxe pickaxe;
 
     public void Attack()
     {

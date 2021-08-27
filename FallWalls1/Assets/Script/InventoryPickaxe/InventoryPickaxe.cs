@@ -14,20 +14,20 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
 
     public string SavePath;
     private PickaxeData pickaxedata;
-    public List<Pickaxe> container = new List<Pickaxe>();
+    public List<Pickaxes> container = new List<Pickaxes>();
 
     private void OnEnable()
     {
 #if UNITY_EDITOR
-        pickaxedata = (PickaxeData)AssetDatabase.LoadAssetAtPath("Assets/Resources/DataBase.asset", typeof(PickaxeData));
+        pickaxedata = (PickaxeData)AssetDatabase.LoadAssetAtPath("Assets/Resources/PickaxeDataBase.asset", typeof(PickaxeData));
 #else
-        pickaxedata = Resources.Load<PickaxeData>("DataBase");
+        pickaxedata = Resources.Load<PickaxeData>("PickaxeDataBase");
 #endif
     }
 
-    public void AddItem(PickaxeController _w)
+    public void AddItem(Pickaxe _w)
     {
-        container.Add(new Pickaxe(pickaxedata.getId[_w], _w, false));
+        container.Add(new Pickaxes(_w.name, pickaxedata.getId[_w], _w, false));
     }
 
     public void Save()
@@ -51,7 +51,7 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
         }
     }
 
-    public bool ContainWeapon(PickaxeController _p)
+    public bool ContainWeapon(Pickaxe _p)
     {
         for (int i = 0; i < container.Count; i++)
         {
@@ -62,7 +62,7 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
         }
         return false;
     }
-    public bool ContainWeaponUse(PickaxeController _w)
+    public bool ContainWeaponUse(Pickaxe _w)
     {
         for (int i = 0; i < container.Count; i++)
         {
@@ -77,7 +77,7 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
         return false;
     }
 
-    public PickaxeController WeaponAttack()
+    public Pickaxe WeaponAttack()
     {
         for (int i = 0; i < container.Count; i++)
         {
@@ -101,7 +101,7 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
         }
 
     }
-    public void UseWeapon(PickaxeController _W)
+    public void UseWeapon(Pickaxe _W)
     {
         for (int i = 0; i < container.Count; i++)
         {
@@ -131,14 +131,16 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
 }
 
 [System.Serializable]
-public class Pickaxe
+public class Pickaxes
 {
+    public string namePickaxe;
     public int ID;
-
-    public PickaxeController pickaxe;
+  
+    public Pickaxe pickaxe;
     public bool Use;
-    public Pickaxe(int id, PickaxeController _pickaxe, bool _use)
+    public Pickaxes(string _namePickaxe, int id, Pickaxe _pickaxe, bool _use)
     {
+        this.namePickaxe = _namePickaxe;
         this.ID = id;
         this.pickaxe = _pickaxe;
         this.Use = _use;
