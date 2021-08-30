@@ -1900,6 +1900,7 @@ GameObject:
   - component: {fileID: 670091515}
   - component: {fileID: 670091518}
   - component: {fileID: 670091517}
+  - component: {fileID: 670091519}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1974,6 +1975,22 @@ MonoBehaviour:
   ExpMiningMark: 20
   FirstGameInMining: 0
   FirstGameInBattle: 0
+--- !u!114 &670091519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670091514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed7f309b051553469fc490fdea18f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: []
+  InvPickaxes: {fileID: 11400000, guid: e5b99e65d2902bd4698cb4bdafb01fa5, type: 2}
+  test1: []
+  InvItem: {fileID: 11400000, guid: ec1ec1ff6637c3b40a1e3bc6645f62d0, type: 2}
 --- !u!1 &736455676
 GameObject:
   m_ObjectHideFlags: 0

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8087249052077699394}
   - component: {fileID: 8087249052077699393}
   m_Layer: 5
-  m_Name: Slot
+  m_Name: SlotItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,12 +219,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8087249052077699398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354472eb68dab3742928ec3e1e681c3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ee1575563f412a45a66fef4d044e7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 8087249052077699396}
   icon: {fileID: 8087249051340127776}
   txtAmount: {fileID: 8087249052588090849}
+  item: {fileID: 0}
 --- !u!1 &8087249052588090851
 GameObject:
   m_ObjectHideFlags: 0

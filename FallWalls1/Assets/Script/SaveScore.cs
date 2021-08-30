@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveScore : MonoBehaviour
@@ -35,7 +33,7 @@ public class SaveScore : MonoBehaviour
         {
             PlayerPrefs.SetInt("SaveCoin", CoinInGame);
         }
-        if(save == TypeSave.LevelBattle)
+        if (save == TypeSave.LevelBattle)
         {
             PlayerPrefs.SetInt("SaveNivelBattle", NivelBatlle);
         }
@@ -89,14 +87,14 @@ public class SaveScore : MonoBehaviour
 
     public void LevelUp(TypeSave _exp)
     {
-        if (TypeSave.ExpMining ==_exp)
+        if (TypeSave.ExpMining == _exp)
         {
             if (ExpMining >= ExpMiningMark)
             {
                 NivelMining++;
-             
+
                 ExpMiningMark *= 2;
-          
+
                 ExpMining = 0;
 
             }
@@ -134,7 +132,7 @@ public class SaveScore : MonoBehaviour
             Save(TypeSave.FirstGameInMining);
 
             return true;
-            
+
         }
     }
 

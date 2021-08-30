@@ -13,4 +13,12 @@ MonoBehaviour:
   m_Name: InventoryItem
   m_EditorClassIdentifier: 
   SavePath: /ItemData
-  container: []
+  container:
+  - nameItem: Diamante
+    ID: 1
+    item: {fileID: 11400000, guid: bbe502dc2bd53fc4499ec75a7b4849b8, type: 2}
+    amount: 8
+  - nameItem: Iron
+    ID: 3
+    item: {fileID: 11400000, guid: a6b8a00c28ed75648a1ad329b7cb1307, type: 2}
+    amount: 12

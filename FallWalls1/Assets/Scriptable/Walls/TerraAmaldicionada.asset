@@ -20,6 +20,11 @@ MonoBehaviour:
   prefabWall: {fileID: 8631241536434720780, guid: 2ee09e16c27056444a9812b0e7c4fd69, type: 3}
   prefabEffect: {fileID: 9160343691521282217, guid: bb2dfb6d9023b8b419dd7fc08b3fdec3, type: 3}
   timeSpawn: 1.05
+  itens:
+  - {fileID: 11400000, guid: bbe502dc2bd53fc4499ec75a7b4849b8, type: 2}
+  - {fileID: 11400000, guid: 9fff96427bcda0d419411a33a7593734, type: 2}
+  ItensMin: 0
+  ItensMax: 0
   CoinMin: 5
   CoinMax: 9
   ExpMin: 9

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -20,15 +18,17 @@ public class PlayerController : MonoBehaviour
 
             SaveScore.instance.Save(SaveScore.TypeSave.Coin);
 
-            if (GameController.instance.typeGamePlay == GameController.TypeGamePlay.Mining) 
-            { 
+            FindObjectOfType<InventoryController>().Save();
+
+            if (GameController.instance.typeGamePlay == GameController.TypeGamePlay.Mining)
+            {
                 SaveScore.instance.Save(SaveScore.TypeSave.LevelMining);
                 SaveScore.instance.Save(SaveScore.TypeSave.ExpMining);
                 SaveScore.instance.Save(SaveScore.TypeSave.ExpMiningMark);
-            } 
-            else if(GameController.instance.typeGamePlay == GameController.TypeGamePlay.Battle) 
+            }
+            else if (GameController.instance.typeGamePlay == GameController.TypeGamePlay.Battle)
             {
-                SaveScore.instance.Save(SaveScore.TypeSave.LevelBattle); 
+                SaveScore.instance.Save(SaveScore.TypeSave.LevelBattle);
             }
 
             isDeath = true;

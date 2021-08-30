@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickaxe:
   - {fileID: 11400000, guid: a977b1fb82805dd4194895dbf0707b33, type: 2}
+  - {fileID: 11400000, guid: 4922fdc428a14b5479c89d63c090ca5b, type: 2}
+  - {fileID: 11400000, guid: 4529513ed0c89f6448f68d127265ec42, type: 2}

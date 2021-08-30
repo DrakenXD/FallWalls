@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryItemSlot : MonoBehaviour
@@ -16,7 +14,7 @@ public class InventoryItemSlot : MonoBehaviour
     void Start()
     {
         invItem.Load();
-        
+
 
         slots = transformParent.GetComponentsInChildren<SlotItem>();
 
@@ -25,29 +23,29 @@ public class InventoryItemSlot : MonoBehaviour
 
     public void UpdateSlots()
     {
-        
-        if (amountSlots < invItem.container.Count)
+
+        for (int i = 0;i< invItem.container.Count;i++)
         {
+            if (amountSlots < invItem.container.Count)
+            {
+                GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
 
-            
-            GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
+                newSelected.transform.SetParent(transformParent);
 
-            newSelected.transform.SetParent(transformParent);
-           
-            newSelected.transform.localScale = new Vector3(1, 1, 1);
+                newSelected.transform.localScale = new Vector3(1, 1, 1);
 
-            slots = transformParent.GetComponentsInChildren<SlotItem>();
+                slots = transformParent.GetComponentsInChildren<SlotItem>();
 
-            amountSlots++;
-          
+                amountSlots++;
+            }
         }
-     
+
 
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < invItem.container.Count)
             {
-                
+
 
                 slots[i].ADDItemInSlot(invItem.container[i]);
             }
@@ -57,7 +55,7 @@ public class InventoryItemSlot : MonoBehaviour
             }
 
         }
-        
+
     }
 
 }

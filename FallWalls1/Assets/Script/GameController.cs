@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
         }
         else if (typeGamePlay == TypeGamePlay.Mining)
         {
-            if (SaveScore.instance.VerifyFirstGameInMining()) SaveScore.instance.ExpMiningMark = 20; 
+            if (SaveScore.instance.VerifyFirstGameInMining()) SaveScore.instance.ExpMiningMark = 20;
             else
             {
                 SaveScore.instance.Load(SaveScore.TypeSave.ExpMiningMark);
@@ -56,18 +56,18 @@ public class GameController : MonoBehaviour
 
             //UI
             TxtTotalNivelMining.SetText("" + SaveScore.instance.NivelMining);
-            TxtTotalExpMining.SetText("" + SaveScore.instance.ExpMining+" / "+SaveScore.instance.ExpMiningMark);
+            TxtTotalExpMining.SetText("" + SaveScore.instance.ExpMining + " / " + SaveScore.instance.ExpMiningMark);
 
             //SaveScore.instance.Resetar();
         }
 
-        
+
 
 
         UpdateTextCoin();
     }
 
- 
+
     public void AddCoin(int amount)
     {
         coins += amount;

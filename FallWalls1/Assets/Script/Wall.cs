@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Wall",menuName ="Wall/New")]
+[CreateAssetMenu(fileName = "Wall", menuName = "Wall/New")]
 public class Wall : ScriptableObject
 {
     [Header("          Settings")]
@@ -11,7 +11,12 @@ public class Wall : ScriptableObject
     public GameObject prefabEffect;
     public float timeSpawn;
 
-    [Header("          Exp Earned")]
+    [Header("          Item Drop")]
+    public Item[] itens;
+    public int ItensMin;
+    public int ItensMax;
+
+    [Header("          Coin Earned")]
     public float CoinMin;
     public float CoinMax;
 

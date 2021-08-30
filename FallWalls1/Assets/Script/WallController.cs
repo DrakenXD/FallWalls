@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -14,7 +13,7 @@ public class WallController : MonoBehaviour
 
     public float life;
     public const float speed = 1.5f;
-    
+
 
     private void Start()
     {
@@ -28,7 +27,7 @@ public class WallController : MonoBehaviour
         transform.Translate(Vector2.down * speed * Time.deltaTime);
     }
 
-    public void TakeDamage(Elements elements,int dmg, int dmgElements)
+    public void TakeDamage(Elements elements, int dmg, int dmgElements)
     {
 
         life -= dmg;
@@ -36,18 +35,20 @@ public class WallController : MonoBehaviour
 
         StartCoroutine("AnimationDamage");
 
-        FindObjectOfType<CreateWalls>().BarLife(life,wall.MaxLife);
+        FindObjectOfType<CreateWalls>().BarLife(life, wall.MaxLife);
 
-        GameObject txtdamage = Instantiate(txtDamage, new Vector3(Random.Range(transform.position.x - 2f, transform.position.x + 2f), Random.Range(transform.position.y - .2f, transform.position.y + .2f), 5) , Quaternion.identity);
+        GameObject txtdamage = Instantiate(txtDamage, new Vector3(Random.Range(transform.position.x - 2f, transform.position.x + 2f), Random.Range(transform.position.y - .2f, transform.position.y + .2f), 5), Quaternion.identity);
         txtdamage.GetComponent<TextMesh>().text = "" + dmg;
 
-        if (elements!=Elements.None)
+         Destroy(txtdamage, 3f);
+
+        if (elements != Elements.None)
         {
             GameObject txtdamageElements = Instantiate(txtDamage, new Vector3(txtdamage.transform.position.x + .5f, txtdamage.transform.position.y + .5f, 5), Quaternion.identity);
             txtdamageElements.GetComponent<TextMesh>().fontSize = 60;
             txtdamageElements.GetComponent<TextMesh>().text = "" + dmgElements;
 
-            for (int i = 0; i < typeSpriteElements.Length; i++) 
+            for (int i = 0; i < typeSpriteElements.Length; i++)
             {
                 if (typeSpriteElements[i].elements == elements)
                 {
@@ -64,23 +65,27 @@ public class WallController : MonoBehaviour
 
         if (life <= 0)
         {
-            int rdCoin = (int)Random.Range(wall.CoinMin,wall.CoinMax);
+            int rdCoin = (int)Random.Range(wall.CoinMin, wall.CoinMax);
             int rdExp = (int)Random.Range(wall.ExpMin, wall.ExpMax);
+
+            FindObjectOfType<InventoryController>().AddItem(wall.itens[Random.Range(0,wall.itens.Length)], 
+                Random.Range(wall.ItensMin, wall.ItensMax));
 
             GameController.instance.AddCoin(rdCoin);
             GameController.instance.AddExpMining(rdExp);
 
             life = 0;
 
-            GameObject effect = Instantiate(wall.prefabEffect,transform.position,Quaternion.identity);
+            GameObject effect = Instantiate(wall.prefabEffect, transform.position, Quaternion.identity);
 
-            FindObjectOfType<CreateWalls>().SearchWall();
 
             FindObjectOfType<CreateWalls>().UpdateVerifylevel();
 
             CreateWalls.AmountKillsToNextFase--;
 
             Destroy(effect, 3f);
+
+           
 
             Destroy(gameObject);
         }
@@ -93,7 +98,7 @@ public class WallController : MonoBehaviour
         sprite.color = Color.white;
     }
 
-  
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {

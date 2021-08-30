@@ -17,4 +17,4 @@ MonoBehaviour:
   - namePickaxe: Picareta De Madeira
     ID: 0
     pickaxe: {fileID: 11400000, guid: a977b1fb82805dd4194895dbf0707b33, type: 2}
-    Use: 0
+    Use: 1

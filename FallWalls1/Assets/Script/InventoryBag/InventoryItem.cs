@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "InventoryItem", menuName = "InventoryItem")]
 public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
@@ -25,14 +24,14 @@ public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
     {
         bool have = false;
 
-        for (int i = 0; i < container.Count; i++) 
+        for (int i = 0; i < container.Count; i++)
         {
-            if (container[i].item ==  _i)
+            if (container[i].item == _i)
             {
                 container[i].amount += amount;
                 have = true;
             }
-            
+
 
         }
         if (!have)
@@ -44,7 +43,7 @@ public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
 
     public void RemoveItem(Item _i, int amount)
     {
-        
+
 
         for (int i = 0; i < container.Count; i++)
         {
@@ -126,7 +125,7 @@ public class InvItem
     public int ID;
     public Item item;
     public int amount;
-    public InvItem(string _nameItem ,int id, Item _item, int _amount)
+    public InvItem(string _nameItem, int id, Item _item, int _amount)
     {
         this.nameItem = _nameItem;
         this.ID = id;

@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
+using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "InventoryPicaxe", menuName = "InventoryPickaxe")]
@@ -135,7 +134,7 @@ public class Pickaxes
 {
     public string namePickaxe;
     public int ID;
-  
+
     public Pickaxe pickaxe;
     public bool Use;
     public Pickaxes(string _namePickaxe, int id, Pickaxe _pickaxe, bool _use)

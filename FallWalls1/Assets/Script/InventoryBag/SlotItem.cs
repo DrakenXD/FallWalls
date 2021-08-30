@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class SlotItem : MonoBehaviour
 {
@@ -21,7 +19,7 @@ public class SlotItem : MonoBehaviour
         txtAmount.enabled = true;
 
         icon.sprite = inventoryItem.item.sprite;
-        txtAmount.SetText(inventoryItem.amount+"x");
+        txtAmount.SetText(inventoryItem.amount + "x");
     }
 
     public void ButtonDescription()
@@ -37,5 +35,5 @@ public class SlotItem : MonoBehaviour
 
         item = null;
     }
-   
+
 }

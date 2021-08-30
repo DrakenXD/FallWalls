@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -12,12 +10,12 @@ public enum Elements
     Water,
 }
 
-[CreateAssetMenu(fileName = "Picareta", menuName ="Pickaxe/New")]
+[CreateAssetMenu(fileName = "Picareta", menuName = "Pickaxe/New")]
 public class Pickaxe : ScriptableObject
 {
     public new string name;
     public Sprite icon;
-    [TextArea]public string description;
+    [TextArea] public string description;
     public int value;
     public int damageMin;
     public int damageMax;

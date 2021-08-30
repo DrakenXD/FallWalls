@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CreateWalls : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class CreateWalls : MonoBehaviour
     [SerializeField] private GameObject[] TotalWalls;
     [SerializeField] private Transform target;
     [SerializeField] private GameObject Attackwall;
-    [SerializeField] private float ReiniciarWave=3;
+    [SerializeField] private float ReiniciarWave = 3;
     [SerializeField] private float R_wave;
 
     [Header("UI")]
@@ -40,7 +40,7 @@ public class CreateWalls : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
-    
+
     }
 
     private void Start()
@@ -64,10 +64,10 @@ public class CreateWalls : MonoBehaviour
         {
             if (R_wave <= 0)
             {
-              
+
                 indexWall = 0;
                 R_wave = ReiniciarWave;
-           
+
             }
             else R_wave -= Time.deltaTime;
         }
@@ -85,7 +85,7 @@ public class CreateWalls : MonoBehaviour
                     timespawn = TypeWalls[i].timeSpawn;
                 }
             }
-            
+
 
             indexWall++;
         }
@@ -97,7 +97,7 @@ public class CreateWalls : MonoBehaviour
 
     public void UpdateUIButtonLevel()
     {
-        if (verifyLevel[levelInGame] && levelInGame < TypeWalls.Length-1)
+        if (verifyLevel[levelInGame] && levelInGame < TypeWalls.Length - 1)
         {
             I_NextFase.SetActive(true);
 
@@ -117,7 +117,7 @@ public class CreateWalls : MonoBehaviour
     }
     public void CreateVerifylevel()
     {
-        for (int i = 0; i < TypeWalls.Length; i++) 
+        for (int i = 0; i < TypeWalls.Length; i++)
         {
             verifyLevel.Add(false);
 
@@ -141,7 +141,7 @@ public class CreateWalls : MonoBehaviour
 
         SaveScore.instance.Save(SaveScore.TypeSave.LevelBattle);
 
-        txtLevel.SetText("(" +levelInGame + ")");
+        txtLevel.SetText("(" + levelInGame + ")");
 
         //destruir todas as paredes
         for (int i = 0; i < TotalWalls.Length; i++)
@@ -166,7 +166,7 @@ public class CreateWalls : MonoBehaviour
 
     public void AttackWall(Elements elements, int dmg, int dmgElements)
     {
-        
+
         GameObject nearestWall = null;
 
         foreach (GameObject _wall in TotalWalls)
@@ -182,8 +182,8 @@ public class CreateWalls : MonoBehaviour
         if (nearestWall != null)
         {
             Attackwall = nearestWall;
-          
-            Attackwall.GetComponent<WallController>().TakeDamage(elements,dmg,dmgElements);
+
+            Attackwall.GetComponent<WallController>().TakeDamage(elements, dmg, dmgElements);
 
 
             BarLife(Attackwall.GetComponent<WallController>().life, Attackwall.GetComponent<WallController>().GetMaxLife());
@@ -194,7 +194,7 @@ public class CreateWalls : MonoBehaviour
             Attackwall = null;
         }
 
-        
+
     }
     public void SearchWall()
     {
@@ -223,7 +223,7 @@ public class CreateWalls : MonoBehaviour
 
             TxtName(Attackwall.GetComponent<WallController>().GetName());
 
-           
+
         }
         else
         {
@@ -238,14 +238,14 @@ public class CreateWalls : MonoBehaviour
     }
 
 
-   
+
     public void TxtName(string name)
     {
-        txtName.SetText(""+name);
+        txtName.SetText("" + name);
     }
     public void BarLife(float lifeMin, float lifeMax)
     {
-        barLife.fillAmount = lifeMin/lifeMax;
+        barLife.fillAmount = lifeMin / lifeMax;
         txtLife.SetText(lifeMin + "/" + lifeMax);
     }
 }
