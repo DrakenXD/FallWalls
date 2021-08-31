@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c336f9869589787448007d5abc6522c0, type: 3}
-  m_Name: PicaretaDeMadeira
+  m_Name: PicaretaDePedra
   m_EditorClassIdentifier: 
-  name: Madeira
-  icon: {fileID: 21300000, guid: 167c251b21307fb4981baf6e1382e2d7, type: 3}
+  name: Picareta de Pedra
+  icon: {fileID: 21300000, guid: de34e17f2cb12a945a42f9b1b1408383, type: 3}
   description: 
-  value: 0
+  recipe:
+  - item: {fileID: 11400000, guid: 0a2b24de288f975498cf175d31dd61c5, type: 2}
+    amount: 12
+  value: 50
   damageMin: 4
   damageMax: 9
   elements: 0

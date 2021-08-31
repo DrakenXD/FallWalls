@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c336f9869589787448007d5abc6522c0, type: 3}
   m_Name: PicaretaDeOuro
   m_EditorClassIdentifier: 
-  name: Ouro
+  name: Picareta de Ouro
   icon: {fileID: 21300000, guid: b63d763d6fbe50448877d709a27d9a78, type: 3}
   description: 
-  value: 0
+  recipe:
+  - item: {fileID: 11400000, guid: 5c8b8fb021957174f946d00d8325fee6, type: 2}
+    amount: 32
+  - item: {fileID: 11400000, guid: 9fff96427bcda0d419411a33a7593734, type: 2}
+    amount: 35
+  value: 500
   damageMin: 15
   damageMax: 21
   elements: 0

@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c336f9869589787448007d5abc6522c0, type: 3}
   m_Name: PicaretaDeFerro
   m_EditorClassIdentifier: 
-  name: Ferro
+  name: Picareta de Ferro
   icon: {fileID: 21300000, guid: d795870cf5053a245aca8559b9cbe9f5, type: 3}
   description: 
-  value: 0
+  recipe:
+  - item: {fileID: 11400000, guid: a6b8a00c28ed75648a1ad329b7cb1307, type: 2}
+    amount: 15
+  value: 120
   damageMin: 9
   damageMax: 15
   elements: 0
