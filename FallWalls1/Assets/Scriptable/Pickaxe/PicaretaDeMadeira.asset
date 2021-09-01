@@ -9,12 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f78d2ecb0d15554f82d6b5e23f73674, type: 3}
-  m_Name: InventoryPicaxe
+  m_Script: {fileID: 11500000, guid: c336f9869589787448007d5abc6522c0, type: 3}
+  m_Name: PicaretaDeMadeira
   m_EditorClassIdentifier: 
-  SavePath: /PickaxeData
-  container:
-  - namePickaxe: Picareta De Madeira
-    ID: 0
-    pickaxe: {fileID: 11400000, guid: a977b1fb82805dd4194895dbf0707b33, type: 2}
-    Use: 1
+  name: Picareta de madeira
+  icon: {fileID: 0}
+  description: 
+  recipe: []
+  value: 0
+  damageMin: 4
+  damageMax: 9
+  elements: 0
+  damageElementsMin: 0
+  damageElementsMax: 0

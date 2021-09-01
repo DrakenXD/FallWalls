@@ -43,8 +43,6 @@ public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
 
     public void RemoveItem(Item _i, int amount)
     {
-
-
         for (int i = 0; i < container.Count; i++)
         {
             if (container[i].item == _i)
@@ -62,7 +60,8 @@ public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
 
 
         }
-        FindObjectOfType<InventoryItemSlot>().UpdateSlots();
+
+        
     }
 
     public void Save()

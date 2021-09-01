@@ -21,8 +21,8 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 9fff96427bcda0d419411a33a7593734, type: 2}
     amount: 35
   value: 500
-  damageMin: 15
-  damageMax: 21
+  damageMin: 25
+  damageMax: 40
   elements: 0
   damageElementsMin: 0
   damageElementsMax: 0

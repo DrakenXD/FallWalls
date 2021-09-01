@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5238c25f7d1a6774b9f9935a85e60e9d, type: 3}
-  m_Name: InventoryItem
+  m_Script: {fileID: 11500000, guid: 2f78d2ecb0d15554f82d6b5e23f73674, type: 3}
+  m_Name: InventoryPickaxe
   m_EditorClassIdentifier: 
-  SavePath: /ItemData
-  container: []
+  SavePath: /PickaxeData
+  container:
+  - namePickaxe: Picareta de Ferro
+    ID: 1
+    pickaxe: {fileID: 11400000, guid: 4922fdc428a14b5479c89d63c090ca5b, type: 2}
+    Use: 0

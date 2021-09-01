@@ -17,10 +17,12 @@ MonoBehaviour:
   description: 
   recipe:
   - item: {fileID: 11400000, guid: a6b8a00c28ed75648a1ad329b7cb1307, type: 2}
-    amount: 15
+    amount: 10
+  - item: {fileID: 11400000, guid: bbe502dc2bd53fc4499ec75a7b4849b8, type: 2}
+    amount: 5
   value: 120
-  damageMin: 9
-  damageMax: 15
+  damageMin: 15
+  damageMax: 19
   elements: 0
   damageElementsMin: 0
   damageElementsMax: 0

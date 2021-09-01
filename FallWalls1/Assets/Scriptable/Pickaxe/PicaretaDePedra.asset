@@ -16,11 +16,11 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: de34e17f2cb12a945a42f9b1b1408383, type: 3}
   description: 
   recipe:
-  - item: {fileID: 11400000, guid: 0a2b24de288f975498cf175d31dd61c5, type: 2}
+  - item: {fileID: 11400000, guid: 4effe803f38c9bd4fa5a5a3eadba0062, type: 2}
     amount: 12
   value: 50
-  damageMin: 4
-  damageMax: 9
+  damageMin: 9
+  damageMax: 15
   elements: 0
   damageElementsMin: 0
   damageElementsMax: 0

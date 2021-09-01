@@ -21,8 +21,7 @@ MonoBehaviour:
   prefabEffect: {fileID: 9160343691521282217, guid: bb2dfb6d9023b8b419dd7fc08b3fdec3, type: 3}
   timeSpawn: 1.05
   itens:
-  - {fileID: 11400000, guid: 0a2b24de288f975498cf175d31dd61c5, type: 2}
-  - {fileID: 11400000, guid: a6b8a00c28ed75648a1ad329b7cb1307, type: 2}
+  - {fileID: 11400000, guid: 4effe803f38c9bd4fa5a5a3eadba0062, type: 2}
   ItensMin: 1
   ItensMax: 3
   CoinMin: 1

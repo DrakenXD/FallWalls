@@ -50,7 +50,7 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
         }
     }
 
-    public bool ContainWeapon(Pickaxe _p)
+    public bool ContainPickaxe(Pickaxe _p)
     {
         for (int i = 0; i < container.Count; i++)
         {
@@ -123,10 +123,8 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
-
+        Debug.Log("");
     }
-
-
 }
 
 [System.Serializable]

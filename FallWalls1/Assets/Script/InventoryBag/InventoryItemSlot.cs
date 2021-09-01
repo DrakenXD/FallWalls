@@ -18,10 +18,11 @@ public class InventoryItemSlot : MonoBehaviour
 
         slots = transformParent.GetComponentsInChildren<SlotItem>();
 
-        UpdateSlots();
+        AddSlots();
+   
     }
 
-    public void UpdateSlots()
+    private void AddSlots()
     {
 
         for (int i = 0;i< invItem.container.Count;i++)
@@ -41,6 +42,12 @@ public class InventoryItemSlot : MonoBehaviour
         }
 
 
+        UpdateSlots();
+
+    }
+
+    public void UpdateSlots()
+    {
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < invItem.container.Count)
@@ -55,7 +62,6 @@ public class InventoryItemSlot : MonoBehaviour
             }
 
         }
-
     }
 
 }

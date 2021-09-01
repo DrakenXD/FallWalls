@@ -1700,6 +1700,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1793486575}
+        m_TargetAssemblyTypeName: InventoryItemSlot, Assembly-CSharp
+        m_MethodName: UpdateSlots
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &744031635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3302,7 +3314,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bbe502dc2bd53fc4499ec75a7b4849b8, type: 2}
   - {fileID: 11400000, guid: 52ca82dc3b641ea4ba44f0f75a6131f4, type: 2}
   - {fileID: 11400000, guid: 9fff96427bcda0d419411a33a7593734, type: 2}
-  InvItem: {fileID: 11400000, guid: ec1ec1ff6637c3b40a1e3bc6645f62d0, type: 2}
+  invItem: {fileID: 11400000, guid: ec1ec1ff6637c3b40a1e3bc6645f62d0, type: 2}
 --- !u!4 &1958359808
 Transform:
   m_ObjectHideFlags: 0
