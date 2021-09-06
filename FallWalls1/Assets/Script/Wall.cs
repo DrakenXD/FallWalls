@@ -17,12 +17,12 @@ public class Wall : ScriptableObject
     public int ItensMax;
 
     [Header("          Coin Earned")]
-    public float CoinMin;
-    public float CoinMax;
+    public int CoinMin;
+    public int CoinMax;
 
     [Header("          Exp Earned")]
-    public float ExpMin;
-    public float ExpMax;
+    public int ExpMin;
+    public int ExpMax;
 
     [Header("          Level Spawn")]
     [Range(0, 999)] public int LevelSpawn;

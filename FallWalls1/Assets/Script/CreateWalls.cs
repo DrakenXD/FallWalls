@@ -95,6 +95,11 @@ public class CreateWalls : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        SearchWall();
+    }
+
     public void UpdateUIButtonLevel()
     {
         if (verifyLevel[levelInGame] && levelInGame < TypeWalls.Length - 1)
@@ -121,7 +126,6 @@ public class CreateWalls : MonoBehaviour
         {
             verifyLevel.Add(false);
 
-            Debug.Log("Fase" + i + verifyLevel[i]);
         }
     }
     public void UpdateVerifylevel()
@@ -133,7 +137,7 @@ public class CreateWalls : MonoBehaviour
 
         UpdateUIButtonLevel();
 
-        Debug.Log("Fase" + levelInGame + verifyLevel[levelInGame]);
+
     }
     public void ButtonNextlevel(int index)
     {
@@ -159,13 +163,10 @@ public class CreateWalls : MonoBehaviour
 
     }
 
-    private void LateUpdate()
-    {
-        TotalWalls = GameObject.FindGameObjectsWithTag("Wall");
-    }
 
     public void AttackWall(Elements elements, int dmg, int dmgElements)
     {
+        TotalWalls = GameObject.FindGameObjectsWithTag("Wall");
 
         GameObject nearestWall = null;
 
@@ -184,8 +185,6 @@ public class CreateWalls : MonoBehaviour
             Attackwall = nearestWall;
 
             Attackwall.GetComponent<WallController>().TakeDamage(elements, dmg, dmgElements);
-
-
             BarLife(Attackwall.GetComponent<WallController>().life, Attackwall.GetComponent<WallController>().GetMaxLife());
             TxtName(Attackwall.GetComponent<WallController>().GetName());
         }
@@ -202,7 +201,9 @@ public class CreateWalls : MonoBehaviour
     }
     private IEnumerator TimeTosearch()
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.5f);
+        TotalWalls = GameObject.FindGameObjectsWithTag("Wall");
+
         GameObject nearestWall = null;
 
         foreach (GameObject _wall in TotalWalls)

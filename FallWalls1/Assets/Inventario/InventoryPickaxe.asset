@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: InventoryPickaxe
   m_EditorClassIdentifier: 
   SavePath: /PickaxeData
-  container:
-  - namePickaxe: Picareta de Ferro
-    ID: 1
-    pickaxe: {fileID: 11400000, guid: 4922fdc428a14b5479c89d63c090ca5b, type: 2}
-    Use: 0
+  container: []

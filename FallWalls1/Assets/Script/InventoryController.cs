@@ -2,16 +2,13 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    public Pickaxe[] test;
-    public InventoryPickaxe InvPickaxes;
-    public Item[] test1;
-    public InventoryItem invItem;
+    [SerializeField] private InventoryPickaxe InvPickaxes;
+    [SerializeField] private InventoryItem invItem;
 
     private void Start()
     {
         Load();
     }
-
     private void Update()
     {
 
@@ -32,18 +29,11 @@ public class InventoryController : MonoBehaviour
     {
         invItem.AddItem(_i,amount);
     }
-    public void AddPickaxe(Pickaxe _p)
-    {
-        InvPickaxes.AddItem(_p);
-        InvPickaxes.Save();
-    }
-
     public void RemoveItem(Item _i, int amount)
     {
         invItem.RemoveItem(_i, amount);
         invItem.Save();
     }
-   
     public bool SearchItem(Item _i, int amount)
     {
         for (int i = 0; i < invItem.container.Count; i++)
@@ -60,6 +50,11 @@ public class InventoryController : MonoBehaviour
         return false;
     }
 
+    public void AddPickaxe(Pickaxe _p)
+    {
+        InvPickaxes.AddItem(_p);
+        InvPickaxes.Save();
+    }
     public bool SeachPickaxe(Pickaxe _p)
     {
         if (InvPickaxes.ContainPickaxe(_p))
@@ -70,6 +65,7 @@ public class InventoryController : MonoBehaviour
         return false;
     }
    
+
     public void Save()
     {
         invItem.Save();

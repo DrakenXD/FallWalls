@@ -23,7 +23,6 @@ public class InventoryPickaxeSlot : MonoBehaviour
 
     public void UpdateSlots()
     {
-
         for (int i = 0; i < pickaxeData.pickaxe.Length; i++) 
         {
             GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
@@ -36,10 +35,6 @@ public class InventoryPickaxeSlot : MonoBehaviour
 
             slots[i].ADDSlot(pickaxeData.pickaxe[i]);
         }
-
-
-       
-
     }
 
   

@@ -35,7 +35,7 @@ public class WallController : MonoBehaviour
 
         StartCoroutine("AnimationDamage");
 
-        FindObjectOfType<CreateWalls>().BarLife(life, wall.MaxLife);
+        
 
         GameObject txtdamage = Instantiate(txtDamage, new Vector3(Random.Range(transform.position.x - 2f, transform.position.x + 2f), Random.Range(transform.position.y - .2f, transform.position.y + .2f), 5), Quaternion.identity);
         txtdamage.GetComponent<TextMesh>().text = "" + dmg;
@@ -65,11 +65,17 @@ public class WallController : MonoBehaviour
 
         if (life <= 0)
         {
-            int rdCoin = (int)Random.Range(wall.CoinMin, wall.CoinMax);
-            int rdExp = (int)Random.Range(wall.ExpMin, wall.ExpMax);
+            int rdCoin = Random.Range(wall.CoinMin, wall.CoinMax);
+            int rdExp = Random.Range(wall.ExpMin, wall.ExpMax);
 
+            //adicionar item no inventario
             FindObjectOfType<InventoryController>().AddItem(wall.itens[Random.Range(0,wall.itens.Length)], 
                 Random.Range(wall.ItensMin, wall.ItensMax));
+
+            //adicionar item na HUD do final
+            FindObjectOfType<GameController>().AddItem(wall.itens[Random.Range(0, wall.itens.Length)], 
+                Random.Range(wall.ItensMin, wall.ItensMax));
+
 
             GameController.instance.AddCoin(rdCoin);
             GameController.instance.AddExpMining(rdExp);
@@ -79,15 +85,17 @@ public class WallController : MonoBehaviour
             GameObject effect = Instantiate(wall.prefabEffect, transform.position, Quaternion.identity);
 
 
-            FindObjectOfType<CreateWalls>().UpdateVerifylevel();
+           
 
             CreateWalls.AmountKillsToNextFase--;
 
+            
+
             Destroy(effect, 3f);
 
-           
-
             Destroy(gameObject);
+
+            
         }
     }
 
