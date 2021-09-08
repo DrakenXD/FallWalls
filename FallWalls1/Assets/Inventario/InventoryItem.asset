@@ -17,4 +17,8 @@ MonoBehaviour:
   - nameItem: Rock
     ID: 5
     item: {fileID: 11400000, guid: 4effe803f38c9bd4fa5a5a3eadba0062, type: 2}
-    amount: 1
+    amount: 169
+  - nameItem: Iron
+    ID: 3
+    item: {fileID: 11400000, guid: a6b8a00c28ed75648a1ad329b7cb1307, type: 2}
+    amount: 47

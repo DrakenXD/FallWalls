@@ -5,6 +5,8 @@ public class InventoryController : MonoBehaviour
     [SerializeField] private InventoryPickaxe InvPickaxes;
     [SerializeField] private InventoryItem invItem;
 
+    [SerializeField] private Pickaxe p; 
+
     private void Start()
     {
         Load();
@@ -21,7 +23,11 @@ public class InventoryController : MonoBehaviour
         {
             Load();
         }
-       
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            AddPickaxe(p);
+        }
     }
 
 

@@ -7,9 +7,7 @@ public class InventoryPickaxeSlot : MonoBehaviour
     [SerializeField] private Transform transformParent;
     [SerializeField] private GameObject CreateSlot;
 
-    [SerializeField] private SlotPickaxe[] slots;
-
-    [SerializeField] private PickaxeData pickaxeData;
+    [SerializeField] private InvSlotPickaxe[] slots;
 
     [SerializeField] private InventoryPickaxe invPickaxe;
     private int amountSlots;
@@ -21,9 +19,9 @@ public class InventoryPickaxeSlot : MonoBehaviour
         UpdateSlots();
     }
 
-    public void UpdateSlots()
+    private void UpdateSlots()
     {
-        for (int i = 0; i < pickaxeData.pickaxe.Length; i++) 
+        for (int i = 0; i < invPickaxe.container.Count; i++) 
         {
             GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
 
@@ -31,12 +29,42 @@ public class InventoryPickaxeSlot : MonoBehaviour
 
             newSelected.transform.localScale = new Vector3(1, 1, 1);
 
-            slots = transformParent.GetComponentsInChildren<SlotPickaxe>();
+            slots = transformParent.GetComponentsInChildren<InvSlotPickaxe>();
 
-            slots[i].ADDSlot(pickaxeData.pickaxe[i]);
+            slots[i].ADDSlot(invPickaxe.container[i]);
         }
     }
 
   
+    public void UsePickaxe(Pickaxes _p)
+    {
+        
+        for (int i = 0; i < invPickaxe.container.Count; i++)
+        {
+            if (invPickaxe.container[i] == _p)
+            {
+                
 
+                invPickaxe.container[i].Use = true;
+                slots[i].UpdateMark(true);
+
+            
+
+                
+            }
+
+         
+        }
+     
+    }
+
+
+    public void removeUsePickaxe()
+    {
+        for (int i = 0; i < invPickaxe.container.Count; i++)
+        {
+            invPickaxe.container[i].Use = false;
+            slots[i].UpdateMark(false);
+        }
+    }
 }
