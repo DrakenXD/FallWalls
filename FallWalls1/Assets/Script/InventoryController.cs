@@ -71,6 +71,10 @@ public class InventoryController : MonoBehaviour
         return false;
     }
    
+    public Pickaxe GetPickaxe()
+    {
+        return InvPickaxes.GetPickaxe();
+    }
 
     public void Save()
     {

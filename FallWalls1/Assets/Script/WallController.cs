@@ -84,12 +84,9 @@ public class WallController : MonoBehaviour
 
             GameObject effect = Instantiate(wall.prefabEffect, transform.position, Quaternion.identity);
 
-
-           
-
             CreateWalls.AmountKillsToNextFase--;
 
-            
+            FindObjectOfType<CreateWalls>().UpdateVerifylevel();
 
             Destroy(effect, 3f);
 

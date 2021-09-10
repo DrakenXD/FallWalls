@@ -10,7 +10,8 @@ public class InvSlotPickaxe : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtNameP;
     [SerializeField] private TextMeshProUGUI txtAttack;
 
-    [SerializeField] private Toggle usingP;
+    [SerializeField] private GameObject mark;
+    private bool usingP;
 
     [SerializeField] Pickaxes p;
 
@@ -26,20 +27,26 @@ public class InvSlotPickaxe : MonoBehaviour
 
         if (_p.Use)
         {
-            usingP.isOn = true;
+            UpdateMark(true);
+            usingP = true;
         }
 
     }
 
-    public void UpdateMark(bool mark)
+    public void UpdateMark(bool _mark)
     {
-        usingP.isOn = mark;
+        mark.SetActive(_mark);
     }
 
-    public void ButtonUse(bool active)
+    public void ButtonUse()
     {
+        if (usingP)
+        {
+            UpdateMark(false);
+        }else UpdateMark(true);
 
         FindObjectOfType<InventoryPickaxeSlot>().UsePickaxe(p);
+
         FindObjectOfType<InventoryController>().Save();
     }
 }

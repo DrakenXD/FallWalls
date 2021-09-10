@@ -58,8 +58,10 @@ public class CreateWalls : MonoBehaviour
     }
 
     // Update is called once per frame
+
     void Update()
     {
+        /*
         if (indexWall == AmountWallCreated && TotalWalls.Length <= 0)
         {
             if (R_wave <= 0)
@@ -71,8 +73,8 @@ public class CreateWalls : MonoBehaviour
             }
             else R_wave -= Time.deltaTime;
         }
-
-        if (timespawn <= 0 && indexWall < AmountWallCreated)
+        */
+        if (timespawn <= 0)
         {
 
 
@@ -93,11 +95,12 @@ public class CreateWalls : MonoBehaviour
         {
             timespawn -= Time.deltaTime;
         }
-    }
 
+    }
     private void LateUpdate()
     {
         SearchWall();
+      
     }
 
     public void UpdateUIButtonLevel()

@@ -41,9 +41,15 @@ public class InventoryPickaxeSlot : MonoBehaviour
         
         for (int i = 0; i < invPickaxe.container.Count; i++)
         {
+            if (invPickaxe.container[i].Use)
+            {
+                invPickaxe.container[i].Use = false;
+                slots[i].UpdateMark(false);
+            }
+
             if (invPickaxe.container[i] == _p)
             {
-                
+               
 
                 invPickaxe.container[i].Use = true;
                 slots[i].UpdateMark(true);
@@ -59,12 +65,4 @@ public class InventoryPickaxeSlot : MonoBehaviour
     }
 
 
-    public void removeUsePickaxe()
-    {
-        for (int i = 0; i < invPickaxe.container.Count; i++)
-        {
-            invPickaxe.container[i].Use = false;
-            slots[i].UpdateMark(false);
-        }
-    }
 }

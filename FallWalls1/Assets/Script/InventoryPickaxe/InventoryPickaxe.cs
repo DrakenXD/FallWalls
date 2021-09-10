@@ -76,7 +76,7 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
         return false;
     }
 
-    public Pickaxe WeaponAttack()
+    public Pickaxe GetPickaxe()
     {
         for (int i = 0; i < container.Count; i++)
         {

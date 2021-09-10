@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class ShopPickaxeSlot : MonoBehaviour
 {
     [SerializeField] private Transform transformParent;
@@ -14,9 +14,14 @@ public class ShopPickaxeSlot : MonoBehaviour
     [SerializeField] private InventoryPickaxe invPickaxe;
     private int amountSlots;
 
+    [SerializeField] private TextMeshProUGUI txtamountcoins;
+    private int amountcoins;
+
     // Start is called before the first frame update
     void Start()
     {
+        amountcoins = PlayerPrefs.GetInt("SaveCoin");
+        UpdateTxtCoins();
 
         UpdateSlots();
     }
@@ -37,4 +42,13 @@ public class ShopPickaxeSlot : MonoBehaviour
         }
     }
 
+    public void UpdateTxtCoins()
+    {
+        txtamountcoins.SetText(""+amountcoins);
+    }
+    public void RemoveCoins(int amount)
+    {
+        PlayerPrefs.SetInt("SaveCoin", amount);
+        UpdateTxtCoins();
+    }
 }

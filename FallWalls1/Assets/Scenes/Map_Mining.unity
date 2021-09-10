@@ -2055,6 +2055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InvPickaxes: {fileID: 11400000, guid: e5b99e65d2902bd4698cb4bdafb01fa5, type: 2}
   invItem: {fileID: 11400000, guid: ec1ec1ff6637c3b40a1e3bc6645f62d0, type: 2}
+  p: {fileID: 0}
 --- !u!1 &736455676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,7 +3446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d94027ce6f87cb489e5202f1c911679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickaxe: {fileID: 11400000, guid: a977b1fb82805dd4194895dbf0707b33, type: 2}
+  pickaxe: {fileID: 11400000, guid: 2deee5022d86bd84d8ff72fd85bf7172, type: 2}
 --- !u!4 &1878895670
 Transform:
   m_ObjectHideFlags: 0

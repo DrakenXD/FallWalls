@@ -7,19 +7,22 @@ public class SaveScore : MonoBehaviour
     {
         instance = this;
     }
-
     public int CoinInGame;
-    public int NivelBatlle;
-    public int NivelMining;
-
-    public int ExpBattle;
-    public int ExpBattleMark;
+    [Header("Mineração")]
+    public int NivelMining; 
     public int ExpMining;
     public int ExpMiningMark;
-
-
     public int FirstGameInMining;
+
+    [Header("Batalha")]
+    public int NivelBatlle;
+    public int ExpBattle;
+    public int ExpBattleMark;
     public int FirstGameInBattle;
+
+
+
+
 
     public void Save(TypeSave save)
     {

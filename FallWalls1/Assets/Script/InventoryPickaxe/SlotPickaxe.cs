@@ -67,6 +67,8 @@ public class SlotPickaxe : MonoBehaviour
 
                     FindObjectOfType<InventoryController>().AddPickaxe(p);
 
+                    FindObjectOfType<ShopPickaxeSlot>().RemoveCoins(p.value);
+
                     haveAll = true;
 
                     Debug.Log("Comprou");
