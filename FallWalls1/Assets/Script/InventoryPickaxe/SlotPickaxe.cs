@@ -18,20 +18,22 @@ public class SlotPickaxe : MonoBehaviour
 
     private Pickaxe p;
     [SerializeField] private int p_recipes;
-    private bool haverecipe;
+  
     public void ADDSlot(Pickaxe _p)
     {
         p = _p;
 
         icon.sprite = _p.icon;
         txtName.SetText("" + _p.name);
-        txtDmg.SetText("ATK:" + _p.damageMin);
+        txtDmg.SetText("" + _p.damageMin);
 
         for (int i = 0; i < _p.recipe.Length; i++) 
         {
             RecipesGameObject[i].SetActive(true);
             RecipesIcon[i].sprite = _p.recipe[i].item.sprite;
             txtRecipesAmount[i].SetText("" + _p.recipe[i].amount);
+
+            
         }
 
         p_recipes = _p.recipe.Length;
@@ -46,52 +48,44 @@ public class SlotPickaxe : MonoBehaviour
 
 
         if (PlayerPrefs.GetInt("SaveCoin") >= _p.value) txtCoins.color = Color.green;
-        else txtCoins.color = Color.red;
+        
 
 
     }
 
     public void purcharsed()
     {
-        bool haveAll = false;
-
         for (int i = 0; i < p.recipe.Length; i++) 
         {
-            if (FindObjectOfType<InventoryController>().SearchItem(p.recipe[i].item,p.recipe[i].amount))
+            if (FindObjectOfType<InventoryController>().SearchItem(p.recipe[i].item,p.recipe[i].amount) 
+            &&  PlayerPrefs.GetInt("SaveCoin") >= p.value)
             {
                 
-                if (p.recipe.Length == p_recipes && haverecipe == true)
+                screenPurcharsed.SetActive(true);
+                buttonPurcharsed.SetActive(false);
+                        
+                Debug.Log($"teste1");
+
+                FindObjectOfType<InventoryController>().AddPickaxe(p);
+
+                FindObjectOfType<ShopPickaxeSlot>().RemoveCoins(p.value);
+
+                for (int i2 = 0; i2 < p_recipes; i2++)
                 {
-                    screenPurcharsed.SetActive(true);
-                    buttonPurcharsed.SetActive(false);
-
-                    FindObjectOfType<InventoryController>().AddPickaxe(p);
-
-                    FindObjectOfType<ShopPickaxeSlot>().RemoveCoins(p.value);
-
-                    haveAll = true;
-
-                    Debug.Log("Comprou");
-                }
-
-                haverecipe = true;
+                    FindObjectOfType<InventoryController>().RemoveItem(p.recipe[i2].item, p.recipe[i2].amount);
+                    Debug.Log($"{i2}");
+                }   
+                Debug.Log("Comprou");
+                          
             }
             else
             {
-                haverecipe = false;
+                
                 Debug.Log("falta " + p.recipe[i].item.name);
             }
         }
 
-        if (haveAll)
-        {
-            for (int i = 0; i < p_recipes; i++)
-            {
-                FindObjectOfType<InventoryController>().RemoveItem(p.recipe[i].item, p.recipe[i].amount);
-
-            }
-        }
-
+        
        
     }
 

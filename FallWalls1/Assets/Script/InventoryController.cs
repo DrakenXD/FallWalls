@@ -29,16 +29,17 @@ public class InventoryController : MonoBehaviour
             AddPickaxe(p);
         }
     }
-
-
     public void AddItem(Item _i,int amount)
     {
         invItem.AddItem(_i,amount);
+        invItem.Save();
+        invItem.Load();
     }
     public void RemoveItem(Item _i, int amount)
     {
         invItem.RemoveItem(_i, amount);
         invItem.Save();
+        invItem.Load();
     }
     public bool SearchItem(Item _i, int amount)
     {
@@ -60,6 +61,7 @@ public class InventoryController : MonoBehaviour
     {
         InvPickaxes.AddItem(_p);
         InvPickaxes.Save();
+        InvPickaxes.Load();
     }
     public bool SeachPickaxe(Pickaxe _p)
     {
@@ -70,12 +72,13 @@ public class InventoryController : MonoBehaviour
 
         return false;
     }
-   
-    public Pickaxe GetPickaxe()
+    public Pickaxe GetPickaxeUsed()
     {
-        return InvPickaxes.GetPickaxe();
+        return InvPickaxes.GetPickaxeUsed();
     }
-
+    public bool HavePickaxe(){
+        return InvPickaxes.HavePickaxe();
+    }
     public void Save()
     {
         invItem.Save();

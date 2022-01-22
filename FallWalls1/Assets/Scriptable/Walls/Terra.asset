@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54261b476533d5842939f1207dfef7dc, type: 3}
   m_Name: Terra
   m_EditorClassIdentifier: 
-  nameWall: Terra
+  nameWall: Terra do Cleto
   MaxLife: 40
   spriteWall:
   - {fileID: 21300000, guid: a8aa19ccf0db77145aea617997026269, type: 3}

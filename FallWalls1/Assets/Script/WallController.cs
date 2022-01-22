@@ -77,7 +77,6 @@ public class WallController : MonoBehaviour
                 Random.Range(wall.ItensMin, wall.ItensMax));
 
 
-            GameController.instance.AddCoin(rdCoin);
             GameController.instance.AddExpMining(rdExp);
 
             life = 0;

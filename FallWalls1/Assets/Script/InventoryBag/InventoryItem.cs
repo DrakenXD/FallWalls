@@ -85,7 +85,7 @@ public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
         }
     }
 
-    public bool ContainWeapon(Item _I)
+    public bool ContainItem(Item _I)
     {
         for (int i = 0; i < container.Count; i++)
         {
@@ -97,6 +97,7 @@ public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
         return false;
     }
 
+    
 
 
 
@@ -104,9 +105,11 @@ public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnAfterDeserialize()
     {
-        for (int i = 0; i < container.Count; i++)
-        {
-            container[i].item = itemdata.GetItem[container[i].ID];
+        if(container.Count > 0){
+            for (int i = 0; i < container.Count; i++)
+            {
+                container[i].item = itemdata.GetItem[container[i].ID];
+            }
         }
     }
 

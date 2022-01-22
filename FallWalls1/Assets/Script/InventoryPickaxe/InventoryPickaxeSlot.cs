@@ -11,15 +11,7 @@ public class InventoryPickaxeSlot : MonoBehaviour
 
     [SerializeField] private InventoryPickaxe invPickaxe;
     private int amountSlots;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-        UpdateSlots();
-    }
-
-    private void UpdateSlots()
+    public void UpdateSlots()
     {
         for (int i = 0; i < invPickaxe.container.Count; i++) 
         {

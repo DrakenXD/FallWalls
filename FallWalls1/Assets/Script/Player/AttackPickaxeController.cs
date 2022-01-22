@@ -1,12 +1,15 @@
-using UnityEngine;
+ using UnityEngine;
 
-public class AttackController : MonoBehaviour
+public class AttackPickaxeController : MonoBehaviour
 {
     public Pickaxe pickaxe;
 
     private void Start()
     {
-        SetPickaxe(FindObjectOfType<InventoryController>().GetPickaxe());
+        if(FindObjectOfType<InventoryController>().HavePickaxe()){
+            pickaxe = FindObjectOfType<InventoryController>().GetPickaxeUsed();
+        }
+        
     }
 
     public void Attack()
@@ -18,8 +21,5 @@ public class AttackController : MonoBehaviour
     }
 
 
-    public void SetPickaxe(Pickaxe _p)
-    {
-        pickaxe = _p;
-    }
+  
 }

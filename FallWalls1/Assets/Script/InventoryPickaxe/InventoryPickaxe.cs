@@ -76,7 +76,7 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
         return false;
     }
 
-    public Pickaxe GetPickaxe()
+    public Pickaxe GetPickaxeUsed()
     {
         for (int i = 0; i < container.Count; i++)
         {
@@ -87,6 +87,17 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
         }
 
         return null;
+    }
+    public bool HavePickaxe(){
+        for (int i = 0; i < container.Count; i++)
+        {
+            if (container[i].Use)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void DisableWeapon()
@@ -115,15 +126,17 @@ public class InventoryPickaxe : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnAfterDeserialize()
     {
-        for (int i = 0; i < container.Count; i++)
-        {
-            container[i].pickaxe = pickaxedata.GetItem[container[i].ID];
+        if(container.Count > 0){
+            for (int i = 0; i < container.Count; i++)
+            {
+                container[i].pickaxe = pickaxedata.GetItem[container[i].ID];
+            }
         }
     }
 
     public void OnBeforeSerialize()
     {
-        Debug.Log("");
+        
     }
 }
 

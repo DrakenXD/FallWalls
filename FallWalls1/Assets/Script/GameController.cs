@@ -13,25 +13,31 @@ public class GameController : MonoBehaviour
         instance = this;
     }
 
+    public int start = 0;
     public TypeGamePlay typeGamePlay;
 
 
     [SerializeField] private GameObject _ShowScreenDeath;
 
-    [Header("In Game")]
+    [Header("Battle")]
     [SerializeField] private TextMeshProUGUI TxtTotalCoins;
+    [SerializeField] private TextMeshProUGUI TxtTotalNivelBattle;
+    [SerializeField] private TextMeshProUGUI TxtTotalExpBattle;
+    
+    [Header("Mining")]
     [SerializeField] private TextMeshProUGUI TxtTotalNivelMining;
     [SerializeField] private TextMeshProUGUI TxtTotalExpMining;
-    [SerializeField] private TextMeshProUGUI TxtTotalNivelBattle;
+    
 
     
 
-    [Header("In ScreenDeah")]
+  
     private int coins;
     private int exp;
+   
+    [Header("In ScreenDeah")]
     [SerializeField] private TextMeshProUGUI TxtShowCoins;
-    [SerializeField] private TextMeshProUGUI TxtShowExpMining;
-
+    [SerializeField] private TextMeshProUGUI TxtShowExp;
     [SerializeField] private List<InvItem> item = new List<InvItem>();
     [SerializeField] private SlotItem[] slots;
     [SerializeField] GameObject CreateSlot;
@@ -41,13 +47,41 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        if(1 != PlayerPrefs.GetInt("Start")){
+            start++;
+            PlayerPrefs.SetInt("Start",start);
+        }
+        
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 120;
+
         Time.timeScale = 1;
 
-        SaveScore.instance.Load(SaveScore.TypeSave.Coin);
-
+        
         if (typeGamePlay == TypeGamePlay.Battle)
         {
+            if (SaveScore.instance.VerifyFirstGameInBattle()) SaveScore.instance.ExpBattleMark = 20;
+            else
+            {
+                SaveScore.instance.Load(SaveScore.TypeSave.ExpBattleMark);
+            }
+            
+            
+            SaveScore.instance.Load(SaveScore.TypeSave.ExpBattle);
             SaveScore.instance.Load(SaveScore.TypeSave.LevelBattle);
+            SaveScore.instance.Load(SaveScore.TypeSave.Coin);
+            
+            
+            
+            TxtTotalCoins.SetText("" + SaveScore.instance.CoinInGame);
+            TxtTotalExpBattle.SetText("" + SaveScore.instance.ExpBattle + " / " + SaveScore.instance.ExpBattleMark);
+            TxtTotalNivelBattle.SetText("" + SaveScore.instance.NivelBatlle);
+
+
+            SaveScore.instance.Save(SaveScore.TypeSave.ExpBattleMark);
+            //SaveScore.instance.Resetar();
         }
         else if (typeGamePlay == TypeGamePlay.Mining)
         {
@@ -67,13 +101,16 @@ public class GameController : MonoBehaviour
             TxtTotalNivelMining.SetText("" + SaveScore.instance.NivelMining);
             TxtTotalExpMining.SetText("" + SaveScore.instance.ExpMining + " / " + SaveScore.instance.ExpMiningMark);
 
-            //SaveScore.instance.Resetar();
+            
+            
+            
+            SaveScore.instance.Save(SaveScore.TypeSave.ExpMiningMark);
         }
 
 
 
 
-        TxtTotalCoins.SetText("" + SaveScore.instance.CoinInGame);
+        
     }
 
 
@@ -83,7 +120,7 @@ public class GameController : MonoBehaviour
 
         SaveScore.instance.CoinInGame += amount;
 
-        TxtTotalCoins.SetText("" + SaveScore.instance.CoinInGame);
+        TxtTotalCoins.SetText("" + SaveScore.instance.CoinInGame);      
     }
 
     public void AddExpMining(int amount)
@@ -97,7 +134,18 @@ public class GameController : MonoBehaviour
         TxtTotalNivelMining.SetText("" + SaveScore.instance.NivelMining);
         TxtTotalExpMining.SetText("" + SaveScore.instance.ExpMining + " / " + SaveScore.instance.ExpMiningMark);
     }
+    public void AddExpBattle(int amount)
+    {
+        exp += amount;
 
+        SaveScore.instance.ExpBattle += amount;
+
+        SaveScore.instance.LevelUp(SaveScore.TypeSave.ExpBattle);
+
+        TxtTotalNivelBattle.SetText("" + SaveScore.instance.NivelBatlle);
+        TxtTotalExpBattle.SetText("" + SaveScore.instance.ExpBattle + " / " 
+        + SaveScore.instance.ExpBattleMark);
+    }
  
     public void AddItem(Item _i, int amount)
     {
@@ -123,35 +171,41 @@ public class GameController : MonoBehaviour
     {
         _ShowScreenDeath.SetActive(true);
 
-        TxtShowCoins.SetText("+" + coins + "$");
-        TxtShowExpMining.SetText("+" + exp + "exp");
+        TxtShowExp.SetText(""+exp+"+" );
+
+        if(typeGamePlay == TypeGamePlay.Battle){
+            TxtShowCoins.SetText("+" + coins + "$");
+
+        }else if(typeGamePlay == TypeGamePlay.Mining){
+            
+            
 
        
-        for (int i = 0; i < item.Count; i++)
-        {
-            GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
+            for (int i = 0; i < item.Count; i++)
+            {
+                GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
 
-            newSelected.transform.SetParent(transformParent);
+                newSelected.transform.SetParent(transformParent);
 
-            newSelected.transform.localScale = new Vector3(1, 1, 1);
+                newSelected.transform.localScale = new Vector3(1, 1, 1);
 
-            slots = transformParent.GetComponentsInChildren<SlotItem>();
+                slots = transformParent.GetComponentsInChildren<SlotItem>();
 
           
 
-            slots[i].ADDItemInSlot(item[i]);
+                slots[i].ADDItemInSlot(item[i]);
 
+            }
         }
+        
+       
         
 
         Time.timeScale = 0;
     }
 
-
-
-
     public enum TypeGamePlay
-    {
+    {   
         Battle,
         Mining
     }

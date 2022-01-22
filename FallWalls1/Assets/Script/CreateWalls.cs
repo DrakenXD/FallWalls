@@ -54,7 +54,7 @@ public class CreateWalls : MonoBehaviour
         AmountKillsToNextFase = AmountWallCreated;
 
 
-        txtLevel.SetText("(" + levelInGame + ")");
+        txtLevel.SetText($"( {levelInGame} )");
     }
 
     // Update is called once per frame
@@ -148,7 +148,7 @@ public class CreateWalls : MonoBehaviour
 
         SaveScore.instance.Save(SaveScore.TypeSave.LevelBattle);
 
-        txtLevel.SetText("(" + levelInGame + ")");
+        txtLevel.SetText($"( {levelInGame} )");
 
         //destruir todas as paredes
         for (int i = 0; i < TotalWalls.Length; i++)
@@ -156,10 +156,10 @@ public class CreateWalls : MonoBehaviour
             Destroy(TotalWalls[i]);
         }
 
-        //recomeçar a contagem de kills
+        //recomeï¿½ar a contagem de kills
         AmountKillsToNextFase = AmountWallCreated;
 
-        //recomeçar a contagem de criação
+        //recomeï¿½ar a contagem de criaï¿½ï¿½o
         indexWall = 0;
 
         UpdateUIButtonLevel();

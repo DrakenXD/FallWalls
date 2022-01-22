@@ -49,6 +49,7 @@ public class ShopPickaxeSlot : MonoBehaviour
     public void RemoveCoins(int amount)
     {
         PlayerPrefs.SetInt("SaveCoin", amount);
+        amountcoins-=amount;
         UpdateTxtCoins();
     }
 }
