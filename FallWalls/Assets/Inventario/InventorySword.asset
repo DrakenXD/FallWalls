@@ -18,7 +18,3 @@ MonoBehaviour:
     ID: 0
     sword: {fileID: 11400000, guid: b31ce4b3fa0559043b901c682858f893, type: 2}
     Use: 0
-  - nameSwords: Iron Sword
-    ID: 2
-    sword: {fileID: 11400000, guid: 060f6d346f2b92f499d014316d104084, type: 2}
-    Use: 0

@@ -13,32 +13,37 @@ public class InventorySwordSlot : MonoBehaviour
     [SerializeField]private int amountSlots;
     public void UpdateSlots()
     {
-        UpdateSistem();
-    }
 
-    private bool UpdateSistem(){
-        if(amountSlots >= invSword.container.Count-1){
-            return false;
-        }
-
-        for (int i = 0; i < invSword.container.Count; i++) 
+        for (int i = 0;i< invSword.container.Count;i++)
         {
-            GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
+            if (amountSlots < invSword.container.Count)
+            {
+                GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
 
-            newSelected.transform.SetParent(transformParent);
+                newSelected.transform.SetParent(transformParent);
 
-            newSelected.transform.localScale = new Vector3(1, 1, 1);
+                newSelected.transform.localScale = new Vector3(1, 1, 1);
 
-            slots = transformParent.GetComponentsInChildren<InvSlotSword>();
+                slots = transformParent.GetComponentsInChildren<InvSlotSword>();
 
-            slots[i].ADDSlot(invSword.container[i]);
-
-                
+                amountSlots++;
+            }
         }
 
-        amountSlots++;
-        return true;
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (i < invSword.container.Count)
+            {
+                slots[i].ADDSlot(invSword.container[i]);
+            }
+           
+
+        }
+
+           
     }
+
+    
 
   
     public void UseSword(Swords _s)

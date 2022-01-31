@@ -52,8 +52,6 @@ public class InventoryItemSlot : MonoBehaviour
         {
             if (i < invItem.container.Count)
             {
-
-
                 slots[i].ADDItemInSlot(invItem.container[i]);
             }
             else

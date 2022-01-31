@@ -13,32 +13,39 @@ public class InventoryPickaxeSlot : MonoBehaviour
     [SerializeField] int amountSlots;
     public void UpdateSlots()
     {
-        UpdateSistem();
+
+        //adiciona um slot
+
+        for (int i = 0;i< invPickaxe.container.Count;i++)
+        {
+            if (amountSlots < invPickaxe.container.Count)
+            {
+                GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
+
+                newSelected.transform.SetParent(transformParent);
+
+                newSelected.transform.localScale = new Vector3(1, 1, 1);
+
+                slots = transformParent.GetComponentsInChildren<InvSlotPickaxe>();
+
+                amountSlots++;
+            }
+        }
+
+        //atualiza os slots
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (i < invPickaxe.container.Count)
+            {
+                slots[i].ADDSlot(invPickaxe.container[i]);
+            }
+           
+
+        }
     }
     
-    private bool UpdateSistem(){
-        if(amountSlots >= invPickaxe.container.Count-1){
-            return false;
-        }
-
-        for (int i = 0; i < invPickaxe.container.Count; i++) 
-        {
-            GameObject newSelected = Instantiate(CreateSlot, transformParent.position, Quaternion.identity);
-
-            newSelected.transform.SetParent(transformParent);
-
-            newSelected.transform.localScale = new Vector3(1, 1, 1);
-
-            slots = transformParent.GetComponentsInChildren<InvSlotPickaxe>();
-
-            slots[i].ADDSlot(invPickaxe.container[i]);
-
-                
-        }
-
-        amountSlots++;
-        return true;
-    }
+   
 
   
     public void UsePickaxe(Pickaxes _p)

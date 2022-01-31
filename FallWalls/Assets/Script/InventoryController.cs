@@ -122,10 +122,12 @@ public class InventoryController : MonoBehaviour
     {
         invItem.Save();
         InvPickaxes.Save();
+        invSword.Save();
     }
     public void Load()
     {
         invItem.Load();
         InvPickaxes.Load();
+        invSword.Load();
     }
 }
