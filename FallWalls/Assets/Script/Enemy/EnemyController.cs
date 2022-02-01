@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour
     private float t_attack;
 
     [Header("Components Unity")]
+    [SerializeField] private ElementsController elements;
+    [SerializeField] private GameObject GameObjectTxtDamage;
     [SerializeField] private Image UILife;
     [SerializeField] private Animator anim;
     // Start is called before the first frame update
@@ -89,10 +91,41 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("Attack",false);
     }   
 
-    public void TakeDamage(int dmg){
+    public void TakeDamage(Elements elements ,int dmg, int dmgElements){
         life-=dmg;
 
+        life -= dmgElements;
+
         UILife.fillAmount = life / maxLife;
+
+        GameObject txtdamage = Instantiate(GameObjectTxtDamage, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
+
+        txtdamage.GetComponent<TextMesh>().text = "" + dmg;
+        txtdamage.GetComponent<TextMesh>().fontSize = 50;
+
+        Destroy(txtdamage, 3f);
+
+        if (elements != Elements.None)
+        {
+            GameObject txtdamageElements = Instantiate(GameObjectTxtDamage, new Vector3(txtdamage.transform.position.x + .5f, txtdamage.transform.position.y + .5f, 5), Quaternion.identity);
+            txtdamageElements.GetComponent<TextMesh>().fontSize = 60;
+            txtdamageElements.GetComponent<TextMesh>().text = "" + dmgElements;
+
+            for (int i = 0; i < this.elements.TypeSprites.Length; i++)
+            {
+                if (this.elements.TypeSprites[i].elements == elements)
+                {
+                    FindObjectOfType<SpriteElements>().SetSpriteElement(this.elements.TypeSprites[i].sprite);
+
+                    txtdamageElements.GetComponent<TextMesh>().color = this.elements.TypeSprites[i].color;
+                }
+            }
+
+            Destroy(txtdamageElements, 3f);
+
+        }
+
+
 
         if(life <= 0){
             UIBattle.instance.amountEnemy--;

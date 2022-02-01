@@ -10,7 +10,7 @@ public class Sword : ScriptableObject
     public new string name;
     public Sprite icon;
     [TextArea] public string description;
-    
+    public float range;
     public int damageMin;
     public int damageMax;
 

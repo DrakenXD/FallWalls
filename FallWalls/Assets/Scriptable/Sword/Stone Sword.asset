@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Stone Sword
   icon: {fileID: 21300000, guid: 5d7c31336c485c645acc3b3f2a2afd2a, type: 3}
   description: 
+  range: 1
   damageMin: 12
   damageMax: 16
   elements: 0

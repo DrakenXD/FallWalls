@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     }
 
     public int start = 0;
-    public TypeGamePlay typeGamePlay;
+    public TypeGamePlay typeGamePlay =  TypeGamePlay.None;
 
 
     [SerializeField] private GameObject _ShowScreenDeath;
@@ -204,9 +204,11 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public enum TypeGamePlay
-    {   
-        Battle,
-        Mining
-    }
+    
+}
+public enum TypeGamePlay
+{   
+    None,
+    Battle,
+     Mining
 }

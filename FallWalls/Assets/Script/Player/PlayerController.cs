@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
        life = Maxlife;
     }
     private void Update() {
-        if(GameController.instance.typeGamePlay == GameController.TypeGamePlay.Battle){
+        if(GameController.instance.typeGamePlay == TypeGamePlay.Battle){
             if(joystick.Horizontal > 0.2f){
                 Moviment();
                
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
            
 
-            if (GameController.instance.typeGamePlay == GameController.TypeGamePlay.Mining)
+            if (GameController.instance.typeGamePlay == TypeGamePlay.Mining)
             {   
                 FindObjectOfType<InventoryController>().Save();
             
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
                 SaveScore.instance.Save(SaveScore.TypeSave.ExpMining);
                 SaveScore.instance.Save(SaveScore.TypeSave.ExpMiningMark);
             }
-            else if (GameController.instance.typeGamePlay == GameController.TypeGamePlay.Battle)
+            else if (GameController.instance.typeGamePlay == TypeGamePlay.Battle)
             {
                 SaveScore.instance.Save(SaveScore.TypeSave.LevelBattle);
                 SaveScore.instance.Save(SaveScore.TypeSave.Coin);

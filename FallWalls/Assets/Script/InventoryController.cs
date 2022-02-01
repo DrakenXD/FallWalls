@@ -7,7 +7,7 @@ public class InventoryController : MonoBehaviour
 
     [SerializeField] private InventorySword invSword;
 
-    [SerializeField] private Pickaxe p; 
+    
 
     private void Start()
     {
@@ -26,10 +26,7 @@ public class InventoryController : MonoBehaviour
             Load();
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            AddPickaxe(p);
-        }
+        
     }
 
     #region ItemSistem
@@ -120,14 +117,29 @@ public class InventoryController : MonoBehaviour
 
     public void Save()
     {
-        invItem.Save();
-        InvPickaxes.Save();
-        invSword.Save();
+        if(GameController.instance.typeGamePlay == TypeGamePlay.None){
+            invItem.Save();
+            InvPickaxes.Save();
+            invSword.Save(); 
+        }else if(GameController.instance.typeGamePlay == TypeGamePlay.Mining){
+            invItem.Save();
+            InvPickaxes.Save();
+        }else if(GameController.instance.typeGamePlay == TypeGamePlay.Battle){
+            invSword.Save();
+        }
+        
     }
     public void Load()
     {
-        invItem.Load();
-        InvPickaxes.Load();
-        invSword.Load();
+        if(GameController.instance.typeGamePlay == TypeGamePlay.None){
+            invItem.Load();
+            InvPickaxes.Load();
+            invSword.Load(); 
+        }else if(GameController.instance.typeGamePlay == TypeGamePlay.Mining){
+            invItem.Load();
+            InvPickaxes.Load();
+        }else if(GameController.instance.typeGamePlay == TypeGamePlay.Battle){
+            invSword.Load();
+        }
     }
 }

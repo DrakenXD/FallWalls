@@ -6960,6 +6960,7 @@ GameObject:
   - component: {fileID: 1958359807}
   - component: {fileID: 1958359810}
   - component: {fileID: 1958359811}
+  - component: {fileID: 1958359812}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -7043,6 +7044,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtCoins: {fileID: 57527494}
+--- !u!114 &1958359812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958359806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c829aba88c26c409cf1f3a728b4f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  typeGamePlay: 0
+  _ShowScreenDeath: {fileID: 0}
+  TxtTotalCoins: {fileID: 0}
+  TxtTotalNivelBattle: {fileID: 0}
+  TxtTotalExpBattle: {fileID: 0}
+  TxtTotalNivelMining: {fileID: 0}
+  TxtTotalExpMining: {fileID: 0}
+  TxtShowCoins: {fileID: 0}
+  TxtShowExp: {fileID: 0}
+  item: []
+  slots: []
+  CreateSlot: {fileID: 0}
+  transformParent: {fileID: 0}
+  amountSlots: 0
 --- !u!1 &1975256512
 GameObject:
   m_ObjectHideFlags: 0

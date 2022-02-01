@@ -15,6 +15,7 @@ MonoBehaviour:
   name: WoodSword
   icon: {fileID: 21300000, guid: f8be47cd99780674596bef66903fba26, type: 3}
   description: 
+  range: 0.5
   damageMin: 5
   damageMax: 9
   elements: 0

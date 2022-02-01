@@ -8,8 +8,8 @@ public class WallController : MonoBehaviour
     [SerializeField] private Wall wall;
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject txtDamage;
-    [SerializeField] private TypeSpriteElements[] typeSpriteElements;
-    [SerializeField] private GameObject spriteElement;
+    [SerializeField] private ElementsController elements;
+    
 
     public float life;
     public const float speed = 1.5f;
@@ -40,7 +40,7 @@ public class WallController : MonoBehaviour
         GameObject txtdamage = Instantiate(txtDamage, new Vector3(Random.Range(transform.position.x - 2f, transform.position.x + 2f), Random.Range(transform.position.y - .2f, transform.position.y + .2f), 5), Quaternion.identity);
         txtdamage.GetComponent<TextMesh>().text = "" + dmg;
 
-         Destroy(txtdamage, 3f);
+        Destroy(txtdamage, 3f);
 
         if (elements != Elements.None)
         {
@@ -48,17 +48,16 @@ public class WallController : MonoBehaviour
             txtdamageElements.GetComponent<TextMesh>().fontSize = 60;
             txtdamageElements.GetComponent<TextMesh>().text = "" + dmgElements;
 
-            for (int i = 0; i < typeSpriteElements.Length; i++)
+            for (int i = 0; i < this.elements.TypeSprites.Length; i++)
             {
-                if (typeSpriteElements[i].elements == elements)
+                if (this.elements.TypeSprites[i].elements == elements)
                 {
-                    FindObjectOfType<SpriteElements>().SetSpriteElement(typeSpriteElements[i].sprite);
+                    FindObjectOfType<SpriteElements>().SetSpriteElement(this.elements.TypeSprites[i].sprite);
 
-                    txtdamageElements.GetComponent<TextMesh>().color = typeSpriteElements[i].color;
+                    txtdamageElements.GetComponent<TextMesh>().color = this.elements.TypeSprites[i].color;
                 }
             }
 
-            Destroy(txtdamage, 3f);
             Destroy(txtdamageElements, 3f);
 
         }

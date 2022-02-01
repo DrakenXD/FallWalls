@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start: 0
-  typeGamePlay: 1
+  typeGamePlay: 2
   _ShowScreenDeath: {fileID: 1635516351}
   TxtTotalCoins: {fileID: 0}
   TxtTotalNivelBattle: {fileID: 0}
@@ -1552,6 +1552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InvPickaxes: {fileID: 11400000, guid: e5b99e65d2902bd4698cb4bdafb01fa5, type: 2}
   invItem: {fileID: 11400000, guid: ec1ec1ff6637c3b40a1e3bc6645f62d0, type: 2}
+  invSword: {fileID: 0}
   p: {fileID: 11400000, guid: 2deee5022d86bd84d8ff72fd85bf7172, type: 2}
 --- !u!1 &736455676
 GameObject:

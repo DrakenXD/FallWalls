@@ -24,7 +24,6 @@ public class SaveScore : MonoBehaviour
    
     private void Start() {       
 
-        PlayerPrefs.SetInt("SaveCoin", 500);
         //Resetar();
         Load(TypeSave.Coin);
         Load(TypeSave.LevelBattle);

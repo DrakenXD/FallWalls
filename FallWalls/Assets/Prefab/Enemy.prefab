@@ -110,6 +110,8 @@ MonoBehaviour:
   attackPoint: {fileID: 4247186109245844363}
   distanceAttack: 0.1
   TimeAttack: 0.4
+  elements: {fileID: 11400000, guid: 8258bbd705835f945a4788de1ce67b18, type: 2}
+  GameObjectTxtDamage: {fileID: 4542372370009365685, guid: 5341c9c775c48bf4a875bfc803578411, type: 3}
   UILife: {fileID: 4247186110425944707}
   anim: {fileID: 4247186109227932260}
 --- !u!70 &4247186109227932264

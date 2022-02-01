@@ -1407,7 +1407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503987704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.278, y: -0.223, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 811002125}
@@ -1835,6 +1835,7 @@ GameObject:
   - component: {fileID: 670091518}
   - component: {fileID: 670091517}
   - component: {fileID: 670091519}
+  - component: {fileID: 670091520}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1881,7 +1882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start: 0
-  typeGamePlay: 0
+  typeGamePlay: 1
   _ShowScreenDeath: {fileID: 1635516351}
   TxtTotalCoins: {fileID: 260455134}
   TxtTotalNivelBattle: {fileID: 656533969}
@@ -1933,6 +1934,21 @@ MonoBehaviour:
   wave: 0
   amountEnemy: 0
   MaxAmountEnemy: 0
+--- !u!114 &670091520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670091514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed7f309b051553469fc490fdea18f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InvPickaxes: {fileID: 0}
+  invItem: {fileID: 0}
+  invSword: {fileID: 11400000, guid: 617b892845e21ff4994958eba2abba9f, type: 2}
 --- !u!1 &681837641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,10 +2334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6108e8330ceea4aa3c9286e0b4896e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  s: {fileID: 0}
   attackPoint: {fileID: 503987705}
-  distanceAttack: 0.4
   anim: {fileID: 811002127}
+  firstSword: {fileID: 11400000, guid: 1a39fa814adc0c843b15559bc77ad9b0, type: 2}
 --- !u!50 &811002129
 Rigidbody2D:
   serializedVersion: 4
