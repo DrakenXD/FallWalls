@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 120;
     }
 
     public int start = 0;
@@ -54,8 +57,7 @@ public class GameController : MonoBehaviour
         }
         
 
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 120;
+        
 
         Time.timeScale = 1;
 

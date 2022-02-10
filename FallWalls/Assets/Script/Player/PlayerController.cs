@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float life;
     [SerializeField] private Animator anim;
 
+    [Header("Mining")]
+
+    [SerializeField] private Sprite houseDestroyed;
+    [SerializeField] private SpriteRenderer[] house;
+    private int houseId;
+
     [Header("Battle")]
     
     [SerializeField] private Image barLife;
@@ -18,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Joystick joystick;
     private void Start() {
        life = Maxlife;
+
     }
     private void Update() {
         if(GameController.instance.typeGamePlay == TypeGamePlay.Battle){
@@ -41,6 +48,15 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         life -= dmg;
+
+        if (GameController.instance.typeGamePlay == TypeGamePlay.Mining)
+        {
+            if (houseId < house.Length)
+            {
+                house[houseId].sprite = houseDestroyed;
+                houseId++;
+            }
+        }
 
         if(barLife != null) barLife.fillAmount = life / Maxlife;
 
